@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Operating System Starter. Turn Claude into a system that remembers your work.</title>
+  <meta name="description" content="A free training pack for setting up a personal AI operating system in Claude Cowork. The mental model, a simple structure, and two ready-to-use skills. About 20 minutes to set up.">
+
+  <!-- Fraunces (display) loaded from Google Fonts. Page degrades gracefully to a system serif if this fails. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --ink: #15171C;
+      --ink-soft: #3A3D45;
+      --ink-mute: #5C606B;
+      --cobalt: #2348F0;
+      --cobalt-dark: #1B39C2;
+      --bg: #FAF9F6;
+      --card: #FFFFFF;
+      --line: #E6E4DD;
+      --line-strong: #D6D3C9;
+      --radius: 14px;
+      --maxw: 1080px;
+      --display: "Fraunces", ui-serif, Georgia, "Times New Roman", serif;
+      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 17px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    /* Honour reduced-motion preference */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+
+    .wrap {
+      width: 100%;
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    a { color: var(--cobalt); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    h1, h2, h3 {
+      font-family: var(--display);
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      line-height: 1.08;
+      margin: 0;
+      color: var(--ink);
+    }
+
+    p { margin: 0 0 1rem; }
+
+    .eyebrow {
+      font-family: var(--sans);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--cobalt);
+      margin: 0 0 18px;
+    }
+
+    .lead { color: var(--ink-soft); }
+
+    /* ---------- Buttons ---------- */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-family: var(--sans);
+      font-size: 16px;
+      font-weight: 600;
+      padding: 13px 22px;
+      border-radius: 10px;
+      border: 1.5px solid transparent;
+      cursor: pointer;
+      transition: background-color .15s ease, border-color .15s ease, color .15s ease;
+    }
+    .btn-primary {
+      background: var(--cobalt);
+      color: #fff;
+    }
+    .btn-primary:hover { background: var(--cobalt-dark); text-decoration: none; }
+    .btn-secondary {
+      background: transparent;
+      color: var(--ink);
+      border-color: var(--line-strong);
+    }
+    .btn-secondary:hover { border-color: var(--ink); text-decoration: none; }
+    .btn-sm { padding: 9px 16px; font-size: 14px; border-radius: 9px; }
+
+    /* ---------- Nav ---------- */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(250, 249, 246, 0.86);
+      backdrop-filter: saturate(140%) blur(10px);
+      -webkit-backdrop-filter: saturate(140%) blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 62px;
+    }
+    .wordmark {
+      font-family: var(--sans);
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+    }
+    .wordmark .dot { color: var(--cobalt); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+    }
+    .nav-links a.navlink {
+      font-family: var(--sans);
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--ink-soft);
+    }
+    .nav-links a.navlink:hover { color: var(--ink); text-decoration: none; }
+
+    /* ---------- Hero ---------- */
+    .hero { padding: 88px 0 64px; }
+    .hero h1 {
+      font-size: clamp(40px, 7vw, 76px);
+      font-weight: 600;
+      max-width: 16ch;
+    }
+    .hero .subhead {
+      font-size: clamp(18px, 2.4vw, 21px);
+      color: var(--ink-soft);
+      max-width: 46ch;
+      margin-top: 22px;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 34px;
+    }
+    .hero-note {
+      margin-top: 20px;
+      font-size: 14px;
+      color: var(--ink-mute);
+      letter-spacing: 0.01em;
+    }
+
+    /* ---------- Section scaffolding ---------- */
+    section { padding: 64px 0; }
+    .section-head { max-width: 60ch; margin-bottom: 40px; }
+    .section-head h2 {
+      font-size: clamp(28px, 4.4vw, 42px);
+    }
+    .section-head .strap {
+      margin-top: 16px;
+      color: var(--ink-soft);
+      font-size: 18px;
+    }
+    .divider { border: 0; border-top: 1px solid var(--line); margin: 0; }
+
+    /* ---------- Cards ---------- */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px;
+    }
+
+    /* The shift: two columns */
+    .shift-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+    .shift-card .tag {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 5px 11px;
+      border-radius: 999px;
+      margin-bottom: 16px;
+    }
+    .shift-card.before { border-color: var(--line-strong); }
+    .shift-card.before .tag { background: #F0EFEA; color: var(--ink-mute); }
+    .shift-card.after { border-color: var(--cobalt); box-shadow: 0 0 0 1px var(--cobalt); }
+    .shift-card.after .tag { background: var(--cobalt); color: #fff; }
+    .shift-card h3 { font-size: 22px; margin-bottom: 10px; }
+    .shift-card p { color: var(--ink-soft); margin-bottom: 0; }
+    .shift-card .meta {
+      margin-top: 18px;
+      font-size: 14px;
+      color: var(--ink-mute);
+      font-weight: 500;
+    }
+
+    /* Three homes */
+    .homes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+    .home-card .num {
+      font-family: var(--display);
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--cobalt);
+      margin-bottom: 14px;
+    }
+    .home-card h3 { font-size: 20px; margin-bottom: 8px; }
+    .home-card .file {
+      font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 13.5px;
+      background: #F4F3EE;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      padding: 3px 9px;
+      display: inline-block;
+      margin-bottom: 14px;
+      color: var(--ink);
+    }
+    .home-card p { color: var(--ink-soft); margin-bottom: 0; font-size: 15.5px; }
+    .home-card .verb {
+      display: inline-block;
+      margin-top: 16px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--cobalt);
+    }
+    .homes-note {
+      margin-top: 30px;
+      color: var(--ink-soft);
+      max-width: 70ch;
+      font-size: 16px;
+    }
+
+    /* The loop */
+    .loop-grid {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+    .loop-card h3 {
+      font-size: 22px;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+    }
+    .loop-card h3 .step {
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--cobalt);
+      text-transform: uppercase;
+    }
+    .loop-card .skill {
+      font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+      color: var(--cobalt);
+      font-weight: 600;
+    }
+    .loop-card p { color: var(--ink-soft); margin-bottom: 0; }
+    .loop-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--cobalt);
+      font-size: 30px;
+      line-height: 1;
+      font-family: var(--sans);
+    }
+    .loop-line {
+      margin-top: 26px;
+      font-family: var(--display);
+      font-size: clamp(19px, 2.6vw, 24px);
+      font-weight: 500;
+      color: var(--ink);
+      max-width: 60ch;
+    }
+
+    /* What you get */
+    .get-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px 30px;
+    }
+    .get-list li {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 17px;
+    }
+    .get-list li .mk {
+      flex: 0 0 auto;
+      color: var(--cobalt);
+      font-weight: 700;
+      margin-top: 1px;
+    }
+    .get-list li strong { font-weight: 600; }
+    .get-list li span.sub { color: var(--ink-mute); }
+
+    /* Quickstart */
+    .quick-card { padding: 12px 0; }
+    ol.steps {
+      counter-reset: step;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    ol.steps li {
+      counter-increment: step;
+      position: relative;
+      padding: 18px 0 18px 58px;
+      border-bottom: 1px solid var(--line);
+    }
+    ol.steps li:last-child { border-bottom: 0; }
+    ol.steps li::before {
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      top: 16px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--ink);
+      color: #fff;
+      font-family: var(--display);
+      font-weight: 600;
+      font-size: 17px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    ol.steps li h3 { font-size: 18px; margin-bottom: 4px; }
+    ol.steps li p { margin: 0; color: var(--ink-soft); font-size: 15.5px; }
+    ol.steps li code {
+      font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.86em;
+      background: #F4F3EE;
+      border: 1px solid var(--line);
+      border-radius: 5px;
+      padding: 1px 6px;
+    }
+    .quick-cta { margin-top: 34px; }
+
+    /* Footer */
+    .footer {
+      background: var(--ink);
+      color: #C9CCD4;
+      padding: 56px 0 44px;
+    }
+    .footer h3 {
+      color: #fff;
+      font-size: 24px;
+      margin-bottom: 14px;
+    }
+    .footer p { color: #AEB2BD; max-width: 58ch; margin-bottom: 14px; }
+    .footer a { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+    .footer a:hover { color: #fff; opacity: 0.8; }
+    .footer .foot-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 28px;
+      margin: 22px 0 30px;
+      font-weight: 600;
+    }
+    .footer .fineprint {
+      border-top: 1px solid #2A2D35;
+      padding-top: 22px;
+      margin-top: 8px;
+      font-size: 13px;
+      color: #82868F;
+      max-width: 70ch;
+    }
+    .footer .fineprint a { color: #B8BCC6; }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 860px) {
+      body { font-size: 16px; }
+      .shift-grid { grid-template-columns: 1fr; }
+      .homes-grid { grid-template-columns: 1fr; }
+      .loop-grid { grid-template-columns: 1fr; }
+      .loop-arrow { transform: rotate(90deg); padding: 4px 0; }
+      .get-list { grid-template-columns: 1fr; }
+      .hero { padding: 64px 0 48px; }
+      section { padding: 52px 0; }
+    }
+
+    @media (max-width: 680px) {
+      .nav-links { gap: 16px; }
+      /* Hide deep-link text on small screens, keep the GitHub button */
+      .nav-links a.navlink { display: none; }
+    }
+
+    @media (max-width: 420px) {
+      .wrap { padding: 0 18px; }
+      .btn { width: 100%; }
+      .hero-actions { flex-direction: column; align-items: stretch; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===================== NAV ===================== -->
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a href="#top" class="wordmark">AI Operating System Starter<span class="dot">.</span></a>
+      <nav class="nav-links" aria-label="Primary">
+        <a class="navlink" href="./theory/01-the-mental-model.md">Theory</a>
+        <a class="navlink" href="./START-HERE.md">Start here</a>
+        <a class="navlink" href="./FAQ.md">FAQ</a>
+        <!-- OWNER: replace href="#" with the public GitHub repo URL -->
+        <a class="btn btn-secondary btn-sm" href="#" rel="noopener">View on GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <a id="top"></a>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap">
+      <p class="eyebrow">Free training pack for Claude Cowork</p>
+      <h1 id="hero-title">Turn Claude into a system that remembers your work.</h1>
+      <p class="subhead">Stop starting cold every time. Set up a folder Claude reads and writes, so your context lives as files and your system gets smarter the more you use it.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="./START-HERE.md">Start here</a>
+        <a class="btn btn-secondary" href="./theory/01-the-mental-model.md">Read the theory</a>
+      </div>
+      <p class="hero-note">Free. Open. About 20 minutes to set up.</p>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ===================== THE SHIFT ===================== -->
+  <section aria-labelledby="shift-title">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">The shift</p>
+        <h2 id="shift-title">From a chat with notes to an agent with a desk.</h2>
+        <p class="strap">Same Claude. New posture. Read-only reference becomes a read-write workspace.</p>
+      </div>
+      <div class="shift-grid">
+        <div class="card shift-card before">
+          <span class="tag">Before</span>
+          <h3>Claude.ai Projects</h3>
+          <p>A chat with reference docs. Claude reads what you uploaded and answers. When the conversation ends, the work scrolls away. Tomorrow you start cold.</p>
+          <p class="meta">You get an answer, then copy it out.</p>
+        </div>
+        <div class="card shift-card after">
+          <span class="tag">After</span>
+          <h3>Claude Cowork</h3>
+          <p>An agent with a desk. A folder it reads and writes. Your work persists as files you own. Claude walks into every task already knowing the background.</p>
+          <p class="meta">You get the thing, saved where you can find it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ===================== THE THREE HOMES ===================== -->
+  <section aria-labelledby="homes-title">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">The three homes</p>
+        <h2 id="homes-title">Every piece of information has one home. That is the rule that stops it rotting.</h2>
+      </div>
+      <div class="homes-grid">
+        <div class="card home-card">
+          <p class="num">01</p>
+          <h3>Current state</h3>
+          <span class="file">CLAUDE.md</span>
+          <p>Status, last contact, next action. The truth as of right now, kept in a single living block.</p>
+          <span class="verb">Overwritten in place</span>
+        </div>
+        <div class="card home-card">
+          <p class="num">02</p>
+          <h3>History</h3>
+          <span class="file">debrief-history.log</span>
+          <p>The dated story of what actually happened, session by session. Nothing here is ever edited.</p>
+          <span class="verb">Append-only</span>
+        </div>
+        <div class="card home-card">
+          <p class="num">03</p>
+          <h3>Open tasks</h3>
+          <span class="file">TASKS.md</span>
+          <p>What is still on your plate, grouped by area. A task that is done leaves the file.</p>
+          <span class="verb">Open items only</span>
+        </div>
+      </div>
+      <p class="homes-note">Reference (what things <strong>are</strong>) and live state (what is <strong>happening now</strong>) never mix. Slow context is what changes rarely, your clients, your people, your pricing. Fast context is this week's status and today's tasks. Keep the two speeds apart and the system stays legible instead of turning into a junk drawer.</p>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ===================== THE LOOP ===================== -->
+  <section aria-labelledby="loop-title">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">The loop</p>
+        <h2 id="loop-title">Two skills, run every session, and the system compounds.</h2>
+        <p class="strap">Structure alone is dead weight. The loop is what turns a folder of files into a brain.</p>
+      </div>
+      <div class="loop-grid">
+        <div class="card loop-card">
+          <h3><span class="step">Step 1</span><span class="skill">reflect</span></h3>
+          <p>Captures how you want to work. The corrections and preferences you fixed mid-session land in your standing context, with your sign-off. Correct once, never again.</p>
+        </div>
+        <div class="loop-arrow" aria-hidden="true">&rarr;</div>
+        <div class="card loop-card">
+          <h3><span class="step">Step 2</span><span class="skill">debrief</span></h3>
+          <p>Files what happened into the three homes. State overwrites, history appends, tasks stay open. The discipline is enforced for you, so nothing rots.</p>
+        </div>
+      </div>
+      <p class="loop-line">Run reflect first, while the corrections are fresh, then debrief. Do that every session and the pair becomes a loop that pays you back.</p>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ===================== WHAT YOU GET ===================== -->
+  <section aria-labelledby="get-title">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">What you get</p>
+        <h2 id="get-title">Everything you need to stand it up, nothing you have to maintain.</h2>
+      </div>
+      <ul class="get-list">
+        <li><span class="mk">&bull;</span><span><strong>The mental model.</strong> <span class="sub">The one shift that makes Cowork different, explained plainly.</span></span></li>
+        <li><span class="mk">&bull;</span><span><strong>A simple structure.</strong> <span class="sub">A folder with three clear homes for information.</span></span></li>
+        <li><span class="mk">&bull;</span><span><strong>Two ready-to-use skills.</strong> <span class="sub">debrief and reflect, installed and working.</span></span></li>
+        <li><span class="mk">&bull;</span><span><strong>Copy-paste setup prompts.</strong> <span class="sub">Build your about-me and structure in minutes.</span></span></li>
+        <li><span class="mk">&bull;</span><span><strong>Templates.</strong> <span class="sub">Starting points for about-me, TASKS, and a company file.</span></span></li>
+        <li><span class="mk">&bull;</span><span><strong>A worked example.</strong> <span class="sub">A filled-in folder so you can see what good looks like.</span></span></li>
+      </ul>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ===================== QUICKSTART ===================== -->
+  <section aria-labelledby="quick-title">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Quickstart</p>
+        <h2 id="quick-title">Five steps, about twenty minutes.</h2>
+      </div>
+      <div class="card quick-card">
+        <ol class="steps">
+          <li>
+            <h3>Point Cowork at a folder</h3>
+            <p>That folder is the workspace. While you are learning, use a folder of copies, not your only copy of anything.</p>
+          </li>
+          <li>
+            <h3>Build your about-me</h3>
+            <p>Run the setup prompt to create <code>about-me.md</code>, your standing context Claude reads at the start of every session.</p>
+          </li>
+          <li>
+            <h3>Set up the structure</h3>
+            <p>Create the three homes, a company or area <code>CLAUDE.md</code>, <code>TASKS.md</code>, and the history log.</p>
+          </li>
+          <li>
+            <h3>Install the two skills</h3>
+            <p>Drop in <code>debrief</code> and <code>reflect</code>. In Cowork you trigger them with plain language.</p>
+          </li>
+          <li>
+            <h3>Do real work, then reflect and debrief</h3>
+            <p>Run reflect first to catch the corrections, then debrief to file what happened. Repeat, and it compounds.</p>
+          </li>
+        </ol>
+      </div>
+      <div class="quick-cta">
+        <a class="btn btn-primary" href="./START-HERE.md">Start here</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="wrap">
+      <h3>Built by Works</h3>
+      <p>Works is an AI enablement consultancy. This pack is the free, self-serve version of the operating layer we install inside teams. Take it, run it, make it yours.</p>
+      <div class="foot-links">
+        <a href="https://workshq.com.au">workshq.com.au</a>
+        <a href="https://savvycal.com/Zachary-King/zac-at-works-30">Want the done-with-you version?</a>
+        <a href="./START-HERE.md">Start here</a>
+        <a href="./FAQ.md">FAQ</a>
+      </div>
+      <p class="fineprint">Product features may change. Check <a href="https://docs.anthropic.com">Anthropic's docs</a> for current Cowork behaviour. The ideas here, the three homes, slow vs fast, and the two skills, hold regardless of the UI.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
