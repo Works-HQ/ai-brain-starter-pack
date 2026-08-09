@@ -1,4 +1,5 @@
 .DS_Store
+.git.nosync/
 *.log.local
 .env
 .env.*
