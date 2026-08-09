@@ -30,6 +30,8 @@ Copy these package files into it:
 - `templates/company-CLAUDE.md`, copied into one area folder and renamed as that folder's `CLAUDE.md`
 - the entire sibling `skills/` folder
 
+If you are the business rather than a consultant with client areas, one area file for your company works the same way. The worked Northwind example shows the consultant shape, but the structure is identical.
+
 Create one empty file at the deployed root named `debrief-history.log`.
 
 ### 2. Fill your standing context, 8 minutes

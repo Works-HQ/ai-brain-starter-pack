@@ -38,6 +38,8 @@ Inside `operating-system/`, copy these templates up one level and remove the pla
 
 Keep `templates/MEETING_NOTE.md` as the source for future meeting files. Create an empty `operating-system/meetings/` folder when you file the first meeting.
 
+Use `templates/PERSON_CONTEXT.md` as an alternate home for person context scoped to a project rather than the brain.
+
 ### 3. Add source documents, 5 minutes
 
 Put copies of at least 10 real documents into `brain/_source-docs/`. Useful inputs include strategy notes, sales decks, product documents, meeting notes, customer research, role descriptions, and recent reports.
@@ -54,7 +56,7 @@ The first pass does not need to capture everything. It needs to be trustworthy e
 
 ### 5. Run the weekly rhythm, 5 minutes
 
-Choose a recurring weekly time and put it in the calendar used by your team. The session should cover:
+Choose a recurring weekly time and put it in the calendar used by your team. This lives in your calendar, not in these files. The session should cover:
 
 1. Run `morning-sweep` or review `current-context.md` and `GLOBAL_TASKS.md`.
 2. Run `weekly-update` and approve the new update.
