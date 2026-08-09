@@ -1,79 +1,67 @@
 ---
 name: reflect
-description: >
-  Make the system smarter by capturing how you want to work, not what was decided.
-  Run it when you have corrected the assistant or felt friction. Trigger by saying
-  "reflect". The motto is "correct once, never again".
+description: Capture corrections so they do not recur and run a weekly review of how the system is working. Use after a correction, when the workflow feels wrong, or once a week. Triggers on "reflect", "correct once, never again", "weekly reflection", and "run the weekly reflect review".
 ---
 
 # Reflect
 
-Where `debrief` captures *what happened*, this captures *how to work better*. It
-turns your corrections and preferences into durable instructions, so you do not
-have to give the same note twice.
+Improve how the system works, not the work itself. This skill has two explicit triggers: correction-capture and weekly review.
 
-## When to run
+## Detect the structure first
 
-- At the end of a session where you corrected the assistant or had to redirect it.
-- Any time you say "reflect".
-- The assistant should also **suggest** it when you have corrected the same thing
-  twice or seemed frustrated.
+Inspect the current folder before planning any write.
 
-## Steps
+1. **Company mode:** use this when `operating-system/` exists with `operating-system/GLOBAL_TASKS.md`.
+2. **Personal mode:** use this when root-level `TASKS.md`, `debrief-history.log`, or `about-me.md` shows the personal structure.
+3. **Both detected:** ask which mode to use. Write nothing until the user chooses.
+4. **Neither detected:** say that this folder does not contain a recognised personal or company structure. Point the user to [START-HERE](https://github.com/Works-HQ/ai-brain-starter-pack/blob/main/START-HERE.md). Write nothing.
 
-### 1. Scan the session
-Look for:
-- **Direct corrections** ("no, do it this way", "actually...", "that's not right")
-- **Style or tone preferences** ("shorter", "more direct", "no jargon")
-- **Process preferences** ("always do X before Y", "never assume Z", "check A first")
-- **Repeats** anything you had to explain more than once
+Do not create a structure just to make the skill run.
 
-### 2. Sort by confidence
-| Tier | Signal | Action |
-|------|--------|--------|
-| HIGH | A direct correction or explicit instruction | Must capture |
-| MEDIUM | An implied or repeated preference | Should capture |
-| LOW | A loose observation | Note only, don't persist yet |
+## Trigger A: correction-capture
 
-### 3. Propose, don't save
-Show the findings and ask which to keep. Never write silently.
-```
-## Reflect: session learnings
+Use this after the user corrects an assumption, style, fact, or process. The aim is **correct once, never again**.
 
-HIGH
-1. [correction] -> proposed: add to [file]
-2. [preference] -> proposed: add to [file]
+1. Identify direct corrections, explicit preferences, repeated friction, and weak inferences.
+2. Sort them as high confidence, medium confidence, or observation only.
+3. Propose a specific durable instruction for each useful finding.
+4. Show the numbered findings and their target files. Ask which numbers to persist.
+5. Wait. Persist only the selected findings.
 
-MEDIUM
-3. [pattern] -> proposed: add to [file]
+## Trigger B: weekly system review
 
-Which should I persist? (numbers, "all", or "none")
-```
+Use this when the user asks for a weekly reflection.
 
-### 4. Persist what's approved
-- A **global** preference about how you work, your voice, or formatting ->
-  `about-me.md`.
-- A rule specific to **one company or area** -> that area's `CLAUDE.md`.
+- In personal mode, read `debrief-history.log`, completed or changed work in `TASKS.md`, `about-me.md`, and relevant `CLAUDE.md` files.
+- In company mode, read `operating-system/DEBRIEF_LOG.md`, the Done section of `operating-system/GLOBAL_TASKS.md`, the previous entries in `operating-system/REFLECTION_LOG.md`, and `operating-system/current-context.md`.
 
-Prefer updating an existing line over adding a new one. Be specific: "use
-contractions, short sentences, no jargon" beats "be more casual".
+Assess what worked, what did not, repeated patterns, stalled work, missing context, and concrete changes for the coming week. Show the proposed reflection and every intended write, then ask which findings to persist. Wait for the answer.
 
-### 5. Confirm
-One line: "Now smarter about: [the thing]."
+## Route approved findings
 
-## Rules
+### Personal mode
 
-- **Always ask before persisting.** Never silently edit instruction files.
-- **Read before writing.** Check existing content so you update rather than duplicate.
-- **Be specific.** A vague preference is a weak one. Capture the concrete version.
-- **Stay in your lane.** Decisions, tasks, and status belong to `debrief`.
-  Corrections, preferences, and patterns belong here. Don't double up.
-- **Compound, don't accumulate.** Each reflection should make the system better at
-  one specific thing, not add noise.
+- A global preference about voice, format, or working style goes in `about-me.md`.
+- A correction or rule specific to one company or area goes in that area's `CLAUDE.md`.
+- Prefer editing an existing line over adding another rule.
+- A weekly review must result in at least one user-selected, concrete improvement to `about-me.md` or a relevant `CLAUDE.md`. If the user selects none, write nothing.
 
-## Run order
+### Company mode
 
-Run `reflect` **first** (catch the corrections while they are fresh), then
-`debrief` (file the outcomes). Together they are the loop that makes the system
-compound: state stays current, and the assistant keeps getting better at working
-the way you want.
+- Record both correction-capture and weekly-review findings as a dated entry in `operating-system/REFLECTION_LOG.md`.
+- Include the correction, the evidence, the proposed durable change, and its target file.
+- Do not edit a brain or skill file during this run. Leave approved changes as explicit actions in the reflection log so they can be reviewed separately.
+
+## Approval and quality rules
+
+- Never write before the user selects what to persist.
+- Read a target before editing it. Do not duplicate an existing instruction.
+- Be specific. "Use short sentences and no jargon" is stronger than "be casual".
+- Keep decisions, tasks, and status in debrief. Keep corrections, preferences, and system patterns here.
+- Be direct and actionable. Do not pad the reflection with reassurance.
+
+After writing, confirm what the system is now smarter about and name the file changed.
+
+## Scaling to per-project folders
+
+Company mode deliberately keeps one top-level `operating-system/REFLECTION_LOG.md`. If separate teams later need their own review histories, add per-project logs and update this routing rule after the shared weekly review has proved useful.

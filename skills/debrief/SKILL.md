@@ -1,103 +1,70 @@
 ---
 name: debrief
-description: >
-  Capture what happened in a working session and file it into the right home so
-  nothing is lost. Run it at the end of any session. Trigger by saying "debrief"
-  or "debrief this".
+description: Turn meeting or work-session notes into filed history, decisions, tasks, waiting-for items, and follow-up drafts. Use after any session worth capturing. Triggers on "debrief", "debrief this", "process these notes", and "file this meeting".
 ---
 
 # Debrief
 
-At the end of a working session, this captures what happened and files each piece
-into the one place it belongs, so your system stays current instead of scrolling
-away in a chat.
+Turn rough notes into filed action without losing the story.
 
-## When to run
+## Detect the structure first
 
-- At the end of any real working session or meeting.
-- Any time you say "debrief" or "debrief this".
+Inspect the current folder before planning any write.
 
-## The three homes (read this first)
+1. **Company mode:** use this when `operating-system/` exists with `operating-system/GLOBAL_TASKS.md`.
+2. **Personal mode:** use this when root-level `TASKS.md` and `debrief-history.log` exist.
+3. **Both detected:** ask which mode to use. Write nothing until the user chooses.
+4. **Neither detected:** say that this folder does not contain a recognised personal or company structure. Point the user to [START-HERE](https://github.com/Works-HQ/ai-brain-starter-pack/blob/main/START-HERE.md). Write nothing.
 
-Every piece of information has exactly one home. This is the rule that stops the
-whole system rotting into a junk drawer:
+Do not create a structure just to make the skill run.
 
-1. **Current state** (status, last contact, next action, open threads for a
-   company or area) lives in that area's `CLAUDE.md`, in a "Current State" block.
-   It is **overwritten in place**. You never stack a new dated entry under the old one.
-2. **History** (the narrative of what happened, dated) lives in
-   `debrief-history.log`. It is **append-only**. This is the only place history lives.
-3. **Open tasks** live in `TASKS.md`, grouped by area. **Open items only.** Done
-   things come off the list.
+## Extract the signal
 
-Reference (what things *are*) and live state (what's *happening now*) never mix.
+Read the source notes fully. Pull out:
 
-## Steps
+- a two or three line summary
+- decisions and their reasoning
+- the user's open tasks
+- things waiting on other people
+- follow-up drafts
+- durable facts or changed current state
 
-### 1. Scan the conversation
-Pull out everything worth keeping:
-- Decisions made, and the why behind them
-- Status changes (what moved from one state to another)
-- Numbers, figures, dates, deadlines
-- New durable facts (a person, a price, a rule, a contact)
-- Open tasks created
-- Things you are now waiting on someone else for
+Do not invent a decision or task. If something was discussed but not decided, label it as discussed. Flag legal, financial, HR, and other sensitive material before proposing a write.
 
-### 2. Decide which files to update
-- Which company/area `CLAUDE.md` files have a changed current state?
-- What goes in the history log?
-- What tasks change in `TASKS.md`?
-If a needed file does not exist yet, plan to create it.
+## Route in personal mode
 
-### 3. Show the plan, then wait
-Before writing anything, show a short plan: which files you will touch and what
-you will add or change in each. Wait for an OK. Do not write first and explain after.
+Personal mode has three homes:
 
-### 4. File each piece into its one home
-- **Full dated session narrative** -> append to `debrief-history.log`. Format:
-  ```
-  > **DD Mon YYYY, [area]: [one-line headline]**
-  > - [key point / decision / what shipped]
-  > - [key point]
-  ```
-  This is the only place the narrative goes.
-- **Current state of an area** -> overwrite the "Current State" block in that
-  area's `CLAUDE.md`. Replace the old lines with the new reality. Do not append a
-  dated version under the old one.
-- **A durable fact that changed** -> edit that one line in place.
-- **Open tasks** -> add new ones to the right section of `TASKS.md`, check off or
-  remove completed ones. Open items only.
+- Append the dated session narrative, including decisions and reasoning, to `debrief-history.log`.
+- Add new open tasks to root `TASKS.md`. Remove or check completed tasks instead of keeping stale open items.
+- Update an existing root or area `CLAUDE.md` only when current state or a durable fact changed. Replace the relevant current-state lines in place. Never append history there.
 
-### 5. Summarise
-Show what was captured and where:
-```
-## Debrief complete
+History is append-only in `debrief-history.log`. Check for duplicate tasks before adding one.
 
-Captured:
-- [key points]
+## Route in company mode
 
-Updated:
-- [file]: [what changed]
-- [file]: [what changed]
+Use the top-level operating system, not project folders:
 
-Next actions:
-- [ ] ...
-```
+- summary and filing record: `operating-system/DEBRIEF_LOG.md`
+- decisions: `operating-system/DECISIONS.md`
+- open tasks: `operating-system/GLOBAL_TASKS.md`
+- waiting on others: `operating-system/WAITING_FOR.md`
 
-## The cardinal rule
+If one of these files is missing and its template exists in `operating-system/templates/`, include creation from that template in the plan. Never replace an existing file. List durable brain facts as a separate proposed update to the relevant `brain/` file and require separate approval before changing it.
 
-History is append-only and lives only in `debrief-history.log`. Everything else,
-current state, facts, tasks, is overwritten in place. **Never append a dated
-session block to a `CLAUDE.md` or to `TASKS.md`.** That accretion is exactly what
-turns a clean system into an unreadable pile. If a `CLAUDE.md` grows a lot from a
-debrief, you are appending history that belongs in the log.
+Do not create another meeting-note file when the supplied source is already a note file. Draft follow-ups in the response. Never send them.
 
-## Gotchas
+## Approval gate
 
-- **Read before you write, every time.** You may have edited a file by hand
-  between sessions. Check what is there before changing it.
-- **Don't duplicate tasks.** Check `TASKS.md` for an existing entry before adding
-  a new one. Reword a near-duplicate rather than stacking two versions.
-- **Don't debrief the debrief.** If the session was just running this skill with
-  no prior work, say "nothing to debrief" rather than inventing entries.
-- **Dates:** use `DD Mon` (e.g. `22 Jun`), consistently, so the log stays readable.
+Before writing, show:
+
+- every file you plan to touch
+- the exact kind of change for each file
+- any sensitive or uncertain item that needs a decision
+- any follow-up as a clearly labelled draft
+
+Wait for approval. Write only the approved changes. If approval excludes a file or item, do not write it elsewhere. After writing, report what changed and what remains unresolved.
+
+## Scaling to per-project folders
+
+Company mode deliberately uses one top-level set of operating-system files. If the system later becomes too busy, you can create project folders with their own `DECISIONS.md`, `WAITING_FOR.md`, and meeting files, then change this routing rule. Make that change only after the top-level workflow has proved useful.
