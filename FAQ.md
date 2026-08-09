@@ -1,107 +1,99 @@
 # FAQ
 
-Common questions about setting up a personal AI operating system in Claude Cowork.
-
-A note on product details: Cowork's interface, pricing, plan availability, and feature limits change over time. Where this guide touches those, check Anthropic's current docs for the live answer. This FAQ focuses on the method, which holds up regardless.
-
----
+Common questions about building and running a file-based AI brain.
 
 ## Getting started
 
-### Do I need to be technical to use this?
+### Do I need to be technical?
 
-No. If you can write a note in plain English and save a file, you can run this. The files are just text. You describe what you want in normal language and the assistant does the editing. Nothing here requires code.
-
-### What is the difference between Claude.ai Projects and Cowork?
-
-A Project is a chat with reference docs attached. It reads those docs but does not change them, and the thinking lives in the conversation. Cowork gives the assistant a desk: a folder it can both read and write. Work persists as files in that folder, so the folder itself becomes the project and survives across sessions.
+No. If you can make a folder, copy a file, and review a draft, you can use this method. The files are plain markdown. Your AI agent does the first-pass writing, then you decide what is true and what gets saved.
 
 ### What do I build first?
 
-Start small. Create `about-me.md`, one `CLAUDE.md` for a company or area you work on, and two skills (debrief and reflect). That is the whole starter kit. Add more files and skills later, only when a real need shows up.
+Start with the personal level in [`you/README.md`](you/README.md). Create `about-me.md`, stand up the three homes, install the skills, and run one real debrief. Do not begin with a company-wide structure unless you already have an equivalent personal habit.
 
-### Do I need Claude Code, or does this work in Cowork?
+### Does the setup really take 30 minutes?
 
-This works in Cowork. You do not need Claude Code. The two skill files happen to also work in Claude Code because they include frontmatter, so if you ever move between the two, the same skills come with you. But Cowork alone is enough.
+The first personal loop should. At the end of 30 minutes, the system should know enough about you to help, have one home for current state, history, and tasks, and have filed one real debrief. It will not know everything. The 30-minute test measures time to first useful operation, not completeness.
 
----
+### Which AI tool do I need?
 
-## How it works
+Any agent that can read and write files in a folder. Claude Code, Codex, and Gemini CLI are examples. Product interfaces and feature limits change, but the file structure does not depend on one vendor.
 
-### What is a CLAUDE.md file and why is it named that?
+### Why do some packages contain both CLAUDE.md and AGENTS.md?
 
-A `CLAUDE.md` file is the standing context for one company or area: what it is, who is involved, and a "Current State" block for what is happening right now. The name is a convention the assistant looks for, so keeping the exact filename means it gets picked up reliably. Treat it as the home base document for that area.
+Different tools look for different context filenames. The company package keeps identical copies for Claude Code and Codex. If you use Gemini CLI, copy `CLAUDE.md` to `GEMINI.md`. Keep the contents aligned.
 
-### Why not just keep everything in one big notes file?
+## The personal level
 
-Because two different kinds of information rot at different speeds. Slow context (what things are) changes rarely. Fast context (what is happening now) changes constantly. Mix them in one file and the stale stuff buries the fresh stuff, and you stop trusting the file. Splitting them keeps each part clean.
+### What are the three homes?
 
-### What are "the three homes"?
+Every live item from personal work goes to one place:
 
-When something happens in a session, it goes to one of three places, never mixed:
+1. Current state goes into the relevant area `CLAUDE.md` and is overwritten in place.
+2. History is appended to `debrief-history.log`.
+3. Open tasks live in `TASKS.md`, with completed items removed.
 
-1. Current state goes into the relevant `CLAUDE.md` "Current State" block, overwritten in place so it always reflects now.
-2. History goes into `debrief-history.log`, appended to the bottom, never edited.
-3. Open tasks go into `TASKS.md`, which holds only open items.
+The separation stops a current-state file from becoming a dated archive and stops a task list from becoming a journal.
 
-Reference material and live state never live in the same spot. That separation is what keeps the system readable.
+### What is the difference between debrief and reflect?
 
-### What is the difference between the debrief skill and the reflect skill?
+Debrief captures what happened: decisions, state changes, tasks, waiting items, and useful history. Reflect captures how the system should work better: a correction, a preference, a recurring failure, or a weekly learning.
 
-Debrief captures what happened and files it into the three homes (current state, history, tasks). Reflect captures corrections and preferences, the "tell me once, never again" learnings about how you want things done. Run reflect first so any corrections are logged, then debrief to file the work. They do different jobs and both matter.
+Run reflect when you correct the agent and during the weekly review. Run debrief after meaningful work. Both skills show proposed writes and wait for approval.
 
----
+### What if I forget to debrief for a week?
 
-## Habits and upkeep
+Run a catch-up debrief using the notes you have. Do not invent missing detail. Mark uncertainty clearly, file open tasks, and reset the current-state file to what is true now.
 
-### How often should I run debrief and reflect?
+### Why not keep everything in one big file?
 
-Run them at the end of a working session, or whenever you have made real progress worth saving. There is no fixed schedule. A good rhythm is reflect first (catch the corrections), then debrief (file the outcome). If a session was just chatting with nothing to save, skip it.
+Different information changes at different speeds. Durable facts may stay true for months. Current priorities may change today. A single file mixes those speeds, grows without a routing rule, and becomes hard to trust. A small spine of routed files is easier for you and the agent to maintain.
 
-### What if I forget to run them for a week?
+## The company level
 
-That is fine. The system is forgiving. When you remember, just run a catch-up debrief and tell the assistant roughly what happened across that gap. It files the decisions and tasks the same way. Nothing breaks from a missed week.
+### What is a company brain?
 
-### Where do meeting notes go?
+A company brain is the refined, slow-changing context the agent should know about the business and its people. In this pack it lives under `brain/`, mainly in `brain/Company.md` and `brain/People/`. It is not a dump of every document and it is not the live task list.
 
-Keep it simple. Run debrief and it pulls the decisions and tasks out of the meeting and files them into the three homes. If you want to keep the raw notes too, drop them as a file in the relevant area folder. The point is that the decisions and tasks get captured. The full transcript is optional.
+### What is the company operating system?
 
-### Won't my CLAUDE.md files get huge over time?
+The operating system is the fast-changing layer under `operating-system/`. It holds current context, open tasks, debriefs, decisions, waiting items, meeting notes, reflections, and the weekly update. The brain explains what the company is. The operating system shows what is happening now.
 
-No, as long as you follow the one rule: overwrite current state, append history to the log. The "Current State" block stays roughly the same size because new state replaces old state. The growing pile of history lives in `debrief-history.log`, separately. If a `CLAUDE.md` is ballooning, something is being appended that should have gone to the log.
+### Why mine documents instead of filling a blank company template?
 
-### What do I do after the basics are working?
+Your existing documents contain more evidence than memory alone. The mine-your-docs workflow inventories copies of those documents, extracts relevant facts, cites their source files, and marks uncertainty with `[confirm]`. You review the draft before anything becomes brain context.
 
-Two directions. Add more `CLAUDE.md` files as you take on more companies or areas. And build your own skills for tasks you repeat: if you find yourself giving the same instructions often, that is a skill waiting to be written. Grow the system to match your actual work, not ahead of it.
+### Which documents should I mine?
 
----
+Start with at least 10 useful documents from different parts of the company. Strategy notes, product documents, sales material, customer research, role descriptions, recent reports, and meeting notes all help. Use documents you are allowed to process with your chosen tool.
 
-## Tools and compatibility
+### What should never happen to source documents?
 
-### How do I trigger a skill in Cowork?
+The agent must not edit or delete them. Put copies in `brain/_source-docs/`, treat that folder as read-only, and write refined context elsewhere. The brain wraps around source material. It does not replace it.
 
-You ask in plain language. Say "debrief this" or "reflect on this session" and the assistant runs the matching skill. You do not type slash commands in Cowork. The skill files do carry frontmatter so they can also be triggered in Claude Code, but in Cowork natural language is how you call them.
+### Why create a People file?
 
-### Can I use this with connectors (Gmail, Drive, Calendar)?
+A short People file gives the agent useful context about someone's role, priorities, communication preferences, history, and open commitments. It improves drafts and meeting preparation without forcing the agent to search old notes every time. Keep it factual and appropriate to the work.
 
-Often yes. Once a connector is set up, the assistant can work with that real account, not just talk about it. Keep it on a tight leash at first: have it draft and not send, suggest and not change, until you trust it. Which connectors are available and how to enable them changes, so check Anthropic's current Cowork docs for what is supported today.
+### What is the weekly rhythm?
 
-### How is this different from a Notion or Obsidian setup?
+Once a week, review current context and global tasks, generate the weekly update, run the weekly reflect review, and check decisions and waiting items. Schedule it on the calendar. Run it manually twice before automating any part.
 
-In Notion or Obsidian, you maintain the system. You file the notes, you update the pages, you keep it tidy, and it decays the moment you get busy. Here, the assistant maintains it through the debrief and reflect loop. You do the work and the system keeps itself current as a side effect. That loop is the whole difference.
+## Skills and upkeep
 
----
+### What makes the skills dual-mode?
 
-## Troubleshooting
+Each shared skill checks which deployed structure exists. Personal mode routes to the three homes. Company mode routes to the top-level company operating files. If neither structure exists, the skill explains what is missing, points to the setup guide, and writes nothing.
 
-### Is my data safe, and where do these files live?
+### Can I change the skills?
 
-These are files, kept on your machine or in your Cowork workspace depending on how you are set up. They are not a separate hosted product you are publishing to. For exactly where files are stored, how they are handled, and any data and privacy specifics, check Anthropic's current docs rather than trusting a general claim here, since those details can change.
+Yes. Prove the supplied workflow first, then edit it when a repeated need appears. Keep the safety gates: read before writing, show the plan, wait for approval, preserve source material, and use one destination for each kind of information.
 
-### My CLAUDE.md is getting cluttered with dated entries. What went wrong?
+### What if the AI writes to the wrong file?
 
-Dated, stacked entries in a `CLAUDE.md` (or in `TASKS.md`) mean history is being appended where it does not belong. Those dated blocks should go to `debrief-history.log`. Move them there, reduce the `CLAUDE.md` back to a clean "Current State" block, and let debrief route new history to the log from now on.
+Stop the run and correct the routing rule before continuing. Move the information to its proper home, remove the incorrect copy, then run reflect so the correction becomes part of the system. Do not accept duplicate truth across several files.
 
-### The assistant did not pick up my standing context. What do I check?
+### How do I know the system is going stale?
 
-Confirm `about-me.md` and the relevant `CLAUDE.md` actually exist in the folder the assistant is working in, with those exact filenames. Standing context only gets read if the files are where the assistant looks. If a fact is wrong, run reflect and correct it once so it sticks.
+You start correcting facts that the files should already hold. Current context describes last month. Open tasks are already finished. Decisions get reopened without their reasoning. Treat each of those as a maintenance signal and repair the smallest broken file or workflow.

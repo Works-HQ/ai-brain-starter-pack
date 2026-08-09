@@ -1,50 +1,83 @@
 # Glossary
 
-Plain definitions for the terms you will hit while setting up your AI operating system. Where a term touches Cowork's exact features or limits, those can change, so treat the definition as the concept and check Anthropic's current docs for live specifics.
+Plain definitions for the terms used in this starter pack.
 
----
+**AI brain**
 
-**Cowork**
-Claude with a desk. Instead of just a chat, the assistant gets a folder it can read and write, and the work persists there as files across sessions. The folder is the project.
+The slow-changing, refined context an AI agent reads so it does not start cold. It contains useful facts about you, a company, and the people involved. It is made of files you own, not hidden chat memory.
 
-**Claude Code**
-Anthropic's command-line version of Claude that works directly with files and tools on your machine. You do not need it for this setup. It matters here only because the same skill files (the ones with frontmatter) work in both Claude Code and Cowork.
+**operating system**
 
-**Project (Claude.ai)**
-A chat on Claude.ai with reference documents attached. The assistant reads those docs but does not change them, and the thinking lives in the conversation rather than in persisted files. This is the thing Cowork builds past.
-
-**CLAUDE.md**
-The standing context file for one company or area: what it is, who is involved, and a "Current State" block for what is happening now. The exact filename is a convention the assistant looks for, so keep it as written.
+The fast-changing file layer that runs current work. It holds current context, open tasks, decisions, waiting items, debriefs, meeting notes, reflections, and weekly updates. It is a working method, not software or a separate product.
 
 **about-me.md**
-Your own standing context, read on every run: who you are, how you work, what matters to you. It is a file you own that the assistant reads and updates over time, so it gets to know you instead of starting cold each session.
 
-**skill**
-A saved set of instructions for a task you do repeatedly, so you do not have to re-explain it each time. In Cowork you trigger a skill by asking in plain language. The starter kit includes two: debrief and reflect.
+Your standing personal context: who you are, what you work on, how you make decisions, how you sound, and what you want help with. Keep it short enough to trust and maintain.
 
-**connector / MCP**
-A connector links Claude to an outside tool or account (for example email, calendar, or a drive) so it can work with your real information, not just talk about it. MCP (Model Context Protocol) is the underlying standard that makes those connections possible. Which connectors exist, what they can do, and how to set them up changes over time, so check Anthropic's current docs rather than assuming.
+**CLAUDE.md**
 
-**the three homes**
-The three places anything from a session goes, kept strictly separate: current state into a `CLAUDE.md` "Current State" block, history into `debrief-history.log`, and open tasks into `TASKS.md`. Keeping reference and live state apart is what keeps the system readable.
+A context file Claude Code reads automatically. In the personal level, an area `CLAUDE.md` holds durable facts and current state. In the company level, the root `CLAUDE.md` maps the whole deployed system and its rules.
+
+**AGENTS.md**
+
+The Codex equivalent of the company root context file. The company package ships `CLAUDE.md` and `AGENTS.md` with identical content so either tool receives the same instructions.
+
+**brain**
+
+The durable company context under `brain/`. `brain/Company.md` explains the business. `brain/People/` holds short files about important working relationships. Raw source documents are kept separately in `brain/_source-docs/`.
 
 **current state**
-The snapshot of what is happening right now in an area, kept in that area's `CLAUDE.md` "Current State" block. It is overwritten in place, so it always reflects now rather than accumulating old updates.
 
-**slow vs fast context**
-Two speeds of information. Slow context is what things are (the durable facts that rarely change). Fast context is what is happening now (the live, frequently changing stuff). The system keeps them in different files on purpose so the fast stuff does not bury the slow stuff.
+The truthful snapshot of what is happening now: status, last contact, next action, priorities, and open threads. It gets overwritten in place when reality changes.
+
+**the three homes**
+
+The personal routing rule: current state goes to an area context file, history appends to `debrief-history.log`, and open tasks live in `TASKS.md`. Each item gets one home.
+
+**slow context**
+
+Information that changes rarely, such as what a company does, a person's role, or your working preferences. It belongs in the brain or standing context.
+
+**fast context**
+
+Information that changes often, such as this week's priorities, open tasks, waiting items, and current status. It belongs in the operating layer.
+
+**mine-your-docs**
+
+The company setup workflow that reads copies of existing documents, inventories what they contain, and drafts refined company and People files. It cites source filenames, marks uncertain facts with `[confirm]`, and never edits the source documents.
+
+**dual-mode skill**
+
+A shared skill that detects whether the deployed folder uses the personal structure or the company structure, then routes its work accordingly. If it detects neither, it writes nothing and points back to setup.
+
+**skill**
+
+A saved workflow for a repeated task. Each skill in this pack lives at `skills/<name>/SKILL.md` and states when it should run, what it reads, what it may write, and where approval is required.
 
 **debrief**
-The skill that captures what happened in a session and files it into the three homes: current state to `CLAUDE.md`, history to the log, tasks to `TASKS.md`. It never stacks dated blocks onto `CLAUDE.md` or `TASKS.md`; history goes to the log.
+
+The skill that captures what happened and files decisions, tasks, state changes, waiting items, and history into their proper homes. It shows proposed writes and waits for approval.
 
 **reflect**
-The skill that captures corrections and preferences, the "correct once, never again" learnings about how you want things done. It always asks before changing anything. Run reflect first, then debrief.
 
-**frontmatter**
-A small block of settings at the top of a skill file (name, description, and similar). It is what lets the same skill file be recognised and triggered in Claude Code as well as Cowork.
+The skill that captures how the system should improve. It handles immediate correction-capture and the weekly system review. It proposes findings, then saves only what you select.
 
-**TASKS.md**
-The file that holds your open tasks, and only open tasks. Debrief adds new ones and closes finished ones here. It is not a log of everything ever done; that history belongs in `debrief-history.log`.
+**morning sweep**
+
+A read-and-summarise skill that turns current context, tasks, and waiting items into a short plan for the day. Its default run changes no files.
+
+**weekly update**
+
+A compact, dated view of progress, open loops, risks, decisions needed, follow-ups, and the next action. In company mode the skill adds the approved update to the rolling operating file.
 
 **debrief-history.log**
-The append-only record of what has happened over time. New entries go on the bottom and old ones are never edited. This is where session history lives so your `CLAUDE.md` files stay lean.
+
+The append-only personal history of meaningful work sessions. Old entries stay unchanged. It stores the dated story so current-state files remain lean.
+
+**source documents**
+
+Copies of real material used to seed a company brain. They live in `brain/_source-docs/`, remain read-only, and are not treated as refined context during normal work.
+
+**30-minute test**
+
+The rule that a newcomer should get the personal level to its first useful operation within 30 minutes. The system passes when standing context exists, the three homes work, the skills can route correctly, and one real debrief has been filed. If it takes longer, simplify the setup.
