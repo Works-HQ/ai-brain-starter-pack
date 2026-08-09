@@ -1,48 +1,49 @@
-# Slow vs fast: the rule that stops your system rotting
+# Slow vs fast context
 
-Most personal knowledge systems die the same way. You start tidy. You add notes. A few weeks in, you can't tell what's current and what's stale, so you stop trusting it, so you stop feeding it. Now it's a junk drawer. The Notion graveyard.
+Most knowledge systems die the same way. You start tidy. You add notes. A few weeks in, you cannot tell what is current and what is stale, so you stop trusting the files. Then you stop using them. Now you have a junk drawer.
 
-There's one rule that prevents this. Learn it and the rest of the system holds together on its own.
+One distinction prevents this: some context changes slowly and some changes fast.
 
-## Two speeds of context
+## Slow context describes
 
-Information moves at two speeds.
+Slow context is what something **is**. Your role. A company's business model. A person's responsibilities. Your writing preferences. The shape of a project. These facts may change, but not every day.
 
-**Slow context** is what things ARE. A client's industry. A person's role. Your pricing model. The shape of a project. This changes rarely. Write it once, revisit it occasionally.
+Slow context belongs in the brain. Give each real area a short file that holds the durable facts the AI would otherwise need you to repeat. Keep the file scoped. A person file should describe that person, not become the running history of every conversation with them.
 
-**Fast context** is what's HAPPENING NOW. This week's status. The next action. Open threads. Today's task list. This changes daily.
+You revisit slow context when reality changes. You do not add a fresh copy every time the fact appears in your work.
 
-The failure mode is mixing them. When "what this client is" and "what happened on Tuesday" live in the same blob, the file rots. You can't skim it. You can't trust it. So you abandon it.
+## Fast context tracks
 
-Keep the two speeds apart and the system stays legible forever.
+Fast context is what is **happening now**. This week's status, the next action, open threads and current tasks. It can change several times in one day.
 
-## The three homes
+Fast context belongs in the operating layer. The personal structure in this pack gives it three homes:
 
-Every piece of information has exactly one home. Three homes, three rules.
+1. Current state lives in the relevant root context file and gets overwritten in place.
+2. History lives in `debrief-history.log` and only gets appended.
+3. Open tasks live in `TASKS.md`, with completed work removed.
 
-**1. Current state lives in that area's `CLAUDE.md`, overwritten in place.**
-Status, last contact, next action, open threads for a client or area. These go in a "Current State" block. When something changes, you overwrite the block. You do NOT stack a new dated entry under the old one. There is only ever one current state, and it's the truth as of right now.
+Those rules keep the latest truth easy to find without throwing away the story of how you got there.
 
-**2. History lives in `debrief-history.log`, append-only.**
-The dated narrative of what actually happened, session by session. New events get appended to the bottom. Nothing here is ever edited or overwritten. This is the only place history lives. When you want the story of how you got here, you read the log.
+## Mixing the speeds creates rot
 
-**3. Open tasks live in `TASKS.md`, open items only.**
-Grouped by area. A task that's done leaves the file. `TASKS.md` is a list of what's still on your plate, never a graveyard of completed work.
+Imagine a company context file. The slow section says what the company sells, who owns which decisions and how work gets approved. The current-state section says a campaign is waiting on final copy and the next action is a review.
 
-## Why mixing them kills the system
+After the review, overwrite that current-state block. Do not paste a dated meeting summary beneath it. The meeting belongs in the history log. Any open action belongs in `TASKS.md`. Any genuinely durable change belongs in the slow section.
 
-Here's the concrete version. A client's `CLAUDE.md` says what the client IS: a mid-size logistics firm, two-year engagement, prefers email over calls. The history log says what happened this week: "Tuesday, sent revised scope, they pushed the start date to March."
+If you keep stacking dated updates in the context file, the AI has to choose between several versions of the truth. If you keep completed tasks, it cannot tell what still needs attention. If you rewrite the history log, you lose the record that explains later decisions.
 
-Do not put one where the other goes. If you paste "sent revised scope Tuesday" into the client file, the file stops being a clean description and starts being a diary. Next week you paste another dated note. Soon the file is fifty dated fragments and you can't find the one fact you needed. That's the rot.
+The files may all contain accurate sentences. The structure still fails because the AI cannot tell which sentence has authority now.
 
-Reference (what things ARE) and live state (what's HAPPENING NOW) never mix. Slow context describes. Fast context tracks. Different speeds, different files.
+## Use two verbs
 
-## The whole trick in one line
+The practical rule is simple:
 
 **Overwrite current state. Append history.**
 
-Current state is a single living snapshot, so you overwrite it. There's only one "now". History is a growing record, so you append to it. There are many "thens".
+There is one current state, so replace the old snapshot when reality moves. There are many past events, so add each one to the record. Tasks are neither state nor history. Keep only the actions that remain open.
 
-Get those two verbs right (overwrite vs append) and your system never rots, because it can never become a pile where the current truth is buried under old truths. The freshest answer is always in exactly one place, and the full story is always in exactly one other place.
+This split also makes maintenance easier. You can scan the current state without reading months of notes. You can review the history without mistaking an old plan for today's plan. You can open the task list and know every line still needs action.
 
-**Next:** [03-the-debrief-reflect-loop.md](03-the-debrief-reflect-loop.md). The habit that makes it compound.
+Slow context gives the AI stable footing. Fast context tells it where things stand. Keep the two speeds separate and the system stays useful as the work changes around it.
+
+**Next:** [03-the-four-layers.md](03-the-four-layers.md). See where both kinds of context fit in the full stack.

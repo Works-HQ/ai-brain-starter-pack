@@ -1,39 +1,46 @@
-# The loop: how the system gets smarter on its own
+# The debrief and reflect loop
 
-You now have the structure: a desk, an `about-me.md`, and the three homes. Structure alone is dead weight. A folder of files you never feed is a storage unit, not a brain.
+A folder structure does not become a brain just because the files exist. The brain becomes useful when real work changes it. Two habits make that happen: debrief captures decisions, while reflect captures learnings.
 
-The thing that makes it a brain is a habit. Two skills, run at the end of a session, that file the right information into the right home so next time Claude already knows.
+They sound similar because both happen after work. They serve different jobs.
 
-In Cowork you trigger these with plain language, not slash commands. You just say "debrief this" or "reflect on that."
+## Debrief captures what changed
 
-## Two skills, two jobs
+A debrief looks at the work itself. What happened? What did you decide? What is now true? What remains open?
 
-**debrief captures what happened.**
-At the end of a working session, debrief looks back over what you did and files each outcome into its one home. Decisions and status overwrite the "Current State" block in the relevant `CLAUDE.md`. New tasks go into `TASKS.md`. The dated narrative appends to `debrief-history.log`. The cardinal rule lives here: history is append-only to the log, current state is overwritten in `CLAUDE.md`, tasks are open-only in `TASKS.md`. It never appends a dated session block to `CLAUDE.md` or `TASKS.md`. That discipline is exactly the "overwrite current state, append history" rule, enforced for you.
+The answers belong in the operating structure. In the personal setup, the dated account goes into `debrief-history.log`, the latest status overwrites the current-state block in the relevant context file, and open actions go into `TASKS.md`. In the company setup, decisions, tasks, waiting items and the session record have their own files.
 
-**reflect captures how to work better.**
-reflect isn't about outcomes. It's about corrections and preferences: how you want the assistant to behave. You told Claude "don't use bullet points in client emails." You corrected a phrasing. You clarified a preference. reflect catches those and files them into `about-me.md` or the relevant `CLAUDE.md`. The motto is "correct once, never again." And reflect always asks before saving, so your standing context only changes with your sign-off.
+The important output is not a polished summary. It is a clean update to the system of record. If a decision remains trapped in a meeting note or chat thread, the next session can miss it. Debrief moves that decision into the place future work will check.
 
-## Run reflect first, then debrief
+## Reflect captures how to improve
 
-Order matters. Run reflect first, while the corrections are fresh and easy to spot. A preference you fixed mid-session is obvious right after; an hour later it's gone. Catch the "how to work" learnings first, then run debrief to file the "what happened" outcomes.
+Reflection looks at the way the work happened. What did the AI misunderstand? What correction did you make? Which preference should apply next time? Where did the workflow create friction?
 
-reflect tunes the instrument. debrief records the performance. Do them in that order, every session, and the pair becomes a loop.
+These are learnings, not decisions about the work. A correction such as "use the local service area, not a national one" may belong in the relevant context file. A preference such as "show one recommendation, then the alternatives" may belong in your personal guidance. A repeated workflow problem may require a change to a skill.
 
-## Why this is the whole game
+Reflection turns a one-off correction into durable guidance. Correct once, never again.
 
-Most people build a beautiful folder structure and then never feed it. They treat the setup as the work. It isn't. The setup is an empty container. Information only lands in the right home if something puts it there, and that something is the loop.
+## You need both records
 
-Adding to the brain IS the work. Every debrief makes the next session start smarter. Every reflect means one less thing you ever have to correct again. The system compounds because you're depositing into it, a little, every time.
+Decisions and learnings answer different questions.
 
-Skip the loop and the files go stale, current state drifts from reality, and within a few weeks you're back in the junk drawer. Run the loop and the opposite happens.
+A decision says, "We will run the workshop in two parts." A learning says, "When planning workshops, show the practical exercise before the theory section." The first changes the current piece of work. The second improves how similar work gets done later.
 
-## The payoff
+If you only debrief, the brain remembers outcomes but keeps repeating the same working mistakes. If you only reflect, the AI may improve its style while losing track of what the business actually decided. One keeps the work current. The other makes the way you work better.
 
-A few weeks in, you notice it. You sit down, name a task, and Claude already knows the client, the history, the open threads, your tone, the thing you corrected last Tuesday. You're not briefing it. You're just working.
+## Run a small loop
 
-That's not magic. It's the loop. You've been filing context into its one home the whole time, so by the time you need it, it's already on the desk.
+At the end of a meaningful session:
 
-Start small. `about-me.md`, one `CLAUDE.md`, and these two skills is enough to begin. Add `TASKS.md`, more files, and the history log as you hit the need. Don't front-load empty folders. Build the loop, run it every session, and let it compound.
+1. Reflect while the corrections and friction are still fresh.
+2. Review the proposed learnings and choose what deserves to persist.
+3. Debrief the outcomes, decisions, changed state and open actions.
+4. Review the proposed writes before any file changes.
 
-**Next:** [../START-HERE.md](../START-HERE.md). Set it up for real.
+Do not save every passing comment. The brain should hold durable signal, not a transcript of your mood. Do not let the AI rewrite standing context without approval. It can identify and draft the change. You remain the editor of the memory it will trust next time.
+
+This loop makes maintenance part of doing the work. You do not schedule a heroic cleanup every few months. Each session leaves the files slightly more accurate and the workflows slightly sharper.
+
+That is how the system compounds. Debrief remembers what changed. Reflect remembers what you learned.
+
+**Next:** [05-from-you-to-your-company.md](05-from-you-to-your-company.md). Grow the same pattern beyond one person.
