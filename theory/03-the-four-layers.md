@@ -43,7 +43,7 @@ The four layers are one stack, not four separate projects:
 3. Keep your durable knowledge refined and current.
 4. Add repeatable skills on top.
 
-Tool choice sits outside this order. Any capable agent that can read and write the files can use the same structure. If you change tools, the architecture and brain still belong to you.
+Tool choice sits outside this order. Any capable agent that can read and write the files can use the same structure. Treat the runtime as rented and the brain as owned: if you change tools, the architecture and brain still belong to you.
 
 The visible magic tends to happen in the skills. The quality comes from the layers underneath.
 

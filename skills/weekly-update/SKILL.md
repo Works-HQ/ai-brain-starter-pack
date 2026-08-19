@@ -7,6 +7,8 @@ description: Produce a compact company weekly update from current context, tasks
 
 Turn the week's scattered signals into one compact view of progress, open loops, risk, and the next move.
 
+**Done when:** the approved dated section is added to `operating-system/WEEKLY_UPDATE.md` above the previous entries, or the user has a conversational summary in personal mode.
+
 ## Detect the structure first
 
 Inspect the current folder before planning any write.

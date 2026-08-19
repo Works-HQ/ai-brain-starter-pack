@@ -7,6 +7,8 @@ description: Capture corrections so they do not recur and run a weekly review of
 
 Improve how the system works, not the work itself. This skill has two explicit triggers: correction-capture and weekly review.
 
+**Done when:** every finding the user selected is written to its target file, and the user has confirmed what the system is now smarter about.
+
 ## Detect the structure first
 
 Inspect the current folder before planning any write.

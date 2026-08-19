@@ -6,6 +6,10 @@ Plain definitions for the terms used in this starter pack.
 
 The slow-changing, refined context an AI agent reads so it does not start cold. It contains useful facts about you, a company, and the people involved. It is made of files you own, not hidden chat memory.
 
+**rented harness**
+
+The runtime that reads your files: Claude Code, Codex, Gemini, or whatever comes next. You rent it, and it will keep changing. The brain, the skills, and the loops you build on top are yours. They are plain files, they move with you if you switch tools, and they are the part that compounds. Tool choice sits outside this method for exactly that reason.
+
 **operating system**
 
 The fast-changing file layer that runs current work. It holds current context, open tasks, decisions, waiting items, debriefs, meeting notes, reflections, and weekly updates. It is a working method, not software or a separate product.
@@ -54,6 +58,10 @@ A shared skill that detects whether the deployed folder uses the personal struct
 
 A saved workflow for a repeated task. Each skill in this pack lives at `skills/<name>/SKILL.md` and states when it should run, what it reads, what it may write, and where approval is required.
 
+**done when (eval)**
+
+The single line on a skill that states the observable, checkable outcome that means the skill worked. A skill without one runs forever, burns effort on every call, and cannot be handed to someone else to check. Every `SKILL.md` in this pack carries one.
+
 **debrief**
 
 The skill that captures what happened and files decisions, tasks, state changes, waiting items, and history into their proper homes. It shows proposed writes and waits for approval.
@@ -61,6 +69,14 @@ The skill that captures what happened and files decisions, tasks, state changes,
 **reflect**
 
 The skill that captures how the system should improve. It handles immediate correction-capture and the weekly system review. It proposes findings, then saves only what you select.
+
+**loop**
+
+A workflow that holds a target, checks current state against it, works the gap, and keeps what it learns somewhere the next run will read. Debrief and reflect are loops. A workflow that only repeats on a schedule and remembers nothing is not a loop, it is a timer.
+
+**Loop Register**
+
+A one-page file listing every loop in the system: its target, cadence, memory location, owner, and done-when line. Template at `company/operating-system/templates/LOOP_REGISTER.md`. A loop with no real target gets removed from the register, not left aspirational.
 
 **morning sweep**
 

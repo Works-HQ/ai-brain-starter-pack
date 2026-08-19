@@ -35,6 +35,7 @@ Inside `operating-system/`, copy these templates up one level and remove the pla
 - `templates/REFLECTION_LOG.md` to `REFLECTION_LOG.md`
 - `templates/WAITING_FOR.md` to `WAITING_FOR.md`
 - `templates/WEEKLY_UPDATE.md` to `WEEKLY_UPDATE.md`
+- `templates/LOOP_REGISTER.md` to `LOOP_REGISTER.md`, prefilled with debrief and reflect
 
 Keep `templates/MEETING_NOTE.md` as the source for future meeting files. Create an empty `operating-system/meetings/` folder when you file the first meeting.
 
@@ -62,6 +63,7 @@ Choose a recurring weekly time and put it in the calendar used by your team. Thi
 2. Run `weekly-update` and approve the new update.
 3. Run the weekly `reflect` review and approve useful changes.
 4. Check that decisions, waiting items, and company facts still have one home each.
+5. Walk the `LOOP_REGISTER.md`: confirm each loop still has a real target, and update its done-when line if the work has changed.
 
 Manual first, automate later. Run this rhythm by hand twice before scheduling any agent action.
 
@@ -87,6 +89,7 @@ company-folder/
     REFLECTION_LOG.md
     WAITING_FOR.md
     WEEKLY_UPDATE.md
+    LOOP_REGISTER.md
     templates/
       MEETING_NOTE.md
       other-source-templates.md
@@ -114,6 +117,7 @@ The package also includes a fictional example under `examples/`. It shows the ex
 - one important person has a useful file in `brain/People/`
 - the agent can state the current priority, open tasks, recorded decisions, and waiting items from the right files
 - a recurring weekly review is on the calendar
+- `LOOP_REGISTER.md` lists debrief and reflect with a real target and a done-when line each
 - no source document was edited or deleted
 
 If the company brain cannot pass those checks, keep the workflow manual and correct the files before expanding it.

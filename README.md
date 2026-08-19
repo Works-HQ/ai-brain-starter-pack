@@ -39,7 +39,7 @@ Thirty minutes is a design test, not a claim that your whole working life can be
 - [`START-HERE.md`](START-HERE.md) routes you through the setup, personal first and company second.
 - [`you/`](you/README.md) is the standalone personal package. Deploy it with `skills/`.
 - [`company/`](company/README.md) is the standalone company package. Deploy it with `skills/`.
-- [`skills/`](skills/debrief/SKILL.md) contains five dual-mode workflows that detect the personal or company structure.
+- [`skills/`](skills/debrief/SKILL.md) contains five dual-mode workflows that detect the personal or company structure, each with a done-when line for what counts as finished.
 - [`theory/`](theory/01-the-one-idea.md) explains the method in seven short chapters.
 - [`training/`](training/facilitator-guide.md) contains ready-to-run personal and company sessions.
 - [`FAQ.md`](FAQ.md) answers common setup and upkeep questions.
@@ -58,6 +58,8 @@ Thirty minutes is a design test, not a claim that your whole working life can be
 The system is tool-agnostic. Claude Code, Codex, and Gemini CLI are examples, not requirements. Any capable agent that can read and write files in your folder can use it.
 
 Claude Code reads `CLAUDE.md`. Codex reads `AGENTS.md`. If you use Gemini CLI, copy CLAUDE.md to GEMINI.md.
+
+Think of the runtime as rented. The harness, the model, the interface: that layer belongs to whoever built it, and it will keep changing whether you like it or not. Your brain, your skills, and your loops are the part you own. They are plain files, they are portable across engines, and they are the part that keeps compounding after this quarter's model gets replaced by next quarter's.
 
 ## Where the method came from
 

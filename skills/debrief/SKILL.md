@@ -7,6 +7,8 @@ description: Turn meeting or work-session notes into filed history, decisions, t
 
 Turn rough notes into filed action without losing the story.
 
+**Done when:** every decision, task, and waiting item from the session has a filed home, and a dated entry exists in history.
+
 ## Detect the structure first
 
 Inspect the current folder before planning any write.

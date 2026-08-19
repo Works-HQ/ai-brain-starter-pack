@@ -28,6 +28,12 @@ A decision says, "We will run the workshop in two parts." A learning says, "When
 
 If you only debrief, the brain remembers outcomes but keeps repeating the same working mistakes. If you only reflect, the AI may improve its style while losing track of what the business actually decided. One keeps the work current. The other makes the way you work better.
 
+## Loops hold a target, not just a clock
+
+Debrief and reflect are not scheduled tasks that happen to repeat. A scheduled task fires on a timer and does the same thing whether or not anything changed. A loop is different: it holds a target, checks where things actually stand against that target, works the gap, and keeps what it learns in a file the next run will read. Repetition without memory is a task on a timer wearing a loop's clothes.
+
+Once a company brain runs more than one or two of these, keep a one-page **Loop Register**: what each loop is aiming at, how often it runs, where it keeps what it learns, who owns it, and the line that tells you it worked. `company/operating-system/templates/LOOP_REGISTER.md` has the shape, prefilled with debrief and reflect. Add your own loop once a workflow has proved itself on a real cadence, not before.
+
 ## Run a small loop
 
 At the end of a meaningful session:

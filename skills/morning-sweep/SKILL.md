@@ -7,6 +7,8 @@ description: Build today's brief from current context, tasks, waiting-for items,
 
 Read what matters and return a one-screen plan for today. The default is read-and-summarise with zero file writes.
 
+**Done when:** the user has a one-screen brief covering today's shape, top 3, calendar, replies needed, overdue items, and parked work.
+
 ## Detect the structure first
 
 Inspect the current folder before reading or planning.

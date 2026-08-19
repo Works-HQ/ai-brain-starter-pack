@@ -66,6 +66,6 @@ These paths are relative to your deployed root folder. They do not point back in
 
 ## A note on tools
 
-This system is tool-agnostic. It is markdown files, a task list, and a rhythm. Any capable AI agent that can read and write files in this folder can run it. Claude Code and Codex are examples, not requirements.
+This system is tool-agnostic. It is markdown files, a task list, and a rhythm. Any capable AI agent that can read and write files in this folder can run it. Claude Code and Codex are examples, not requirements. Think of the runtime as rented: the model and the interface will keep changing, but this folder is what you own, and it moves with you.
 
 If you use Gemini CLI, copy CLAUDE.md to GEMINI.md.

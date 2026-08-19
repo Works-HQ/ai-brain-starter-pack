@@ -90,6 +90,10 @@ Each shared skill checks which deployed structure exists. Personal mode routes t
 
 Yes. Prove the supplied workflow first, then edit it when a repeated need appears. Keep the safety gates: read before writing, show the plan, wait for approval, preserve source material, and use one destination for each kind of information.
 
+### What is the "Done when" line?
+
+Each skill in this pack states one observable, checkable line for what "worked" means, near the top of the skill file. A skill without one tends to run forever, burn effort on every call, and cannot be handed to someone else to check. When you write your own skill, write the done-when line before you write the steps. If you cannot state it in one line, the skill is not scoped yet.
+
 ### What if the AI writes to the wrong file?
 
 Stop the run and correct the routing rule before continuing. Move the information to its proper home, remove the incorrect copy, then run reflect so the correction becomes part of the system. Do not accept duplicate truth across several files.

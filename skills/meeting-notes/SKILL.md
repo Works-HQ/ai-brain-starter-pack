@@ -7,6 +7,8 @@ description: Turn rough notes into a clean meeting record and prepare its action
 
 Turn rough notes into one clean, findable record without losing signal. This skill creates the record. Debrief files the decisions, tasks, and waiting-for items afterward.
 
+**Done when:** the cleaned note is filed at its approved destination, and the extracted action items are listed for debrief.
+
 ## Detect the structure first
 
 Inspect the current folder before planning any write.
