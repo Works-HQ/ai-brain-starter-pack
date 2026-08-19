@@ -35,6 +35,16 @@ If it takes longer, stop adding structure. Remove steps, shorten files, and get 
 
 The company level takes longer because source documents need human review. Its quickstart gives you a trustworthy first pass, then the weekly rhythm improves it through use.
 
+## Keep your filled-in brain private
+
+This starter pack is public. Your filled-in brain is not. Once these files hold real names, deals, numbers, and history, they are confidential company records that happen to live in markdown.
+
+Three rules:
+
+- Copy this pack into a fresh private repository or a private folder. Do not fork it on GitHub: forks of public repositories are public.
+- Keep credentials out of the files entirely. API keys, passwords, and tokens belong in a secrets manager or a local `.env` file, which this pack's `.gitignore` already excludes. The brain stores facts, never keys.
+- Before sharing any single file outside the company, reread it as an outsider would. People files and current-state files hold candid detail by design.
+
 ## If you want the reasoning
 
 The setup guides are enough to build the system. The [theory](theory/01-the-one-idea.md) explains why the structure works, the [FAQ](FAQ.md) handles common questions, and the [glossary](GLOSSARY.md) defines the few terms used here.

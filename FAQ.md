@@ -101,3 +101,13 @@ Stop the run and correct the routing rule before continuing. Move the informatio
 ### How do I know the system is going stale?
 
 You start correcting facts that the files should already hold. Current context describes last month. Open tasks are already finished. Decisions get reopened without their reasoning. Treat each of those as a maintenance signal and repair the smallest broken file or workflow.
+
+## Privacy
+
+### Should my brain repository be public?
+
+No. The starter pack is public so anyone can copy the method. Your filled-in copy holds real people, deals, numbers, and history, and it should live in a private repository or a private folder from day one. Copy the pack rather than forking it, because forks of public repositories are public.
+
+### Where do API keys and passwords go?
+
+Not in the brain. Credentials belong in a secrets manager or a local `.env` file, which the pack's `.gitignore` already excludes from git. The brain stores facts the agent should read, never secrets it could leak.
