@@ -13,7 +13,7 @@
       --blue: #2348f0;
       --blue-dark: #1938c7;
       --paper: #faf9f6;
-      --white: #ffffff;
+      --white: #fffefa;
       --line: #dedcd5;
       --soft: #f0eee8;
       --radius: 16px;
@@ -191,6 +191,32 @@
       gap: 22px;
     }
     .layout h3 { margin-bottom: 16px; font-size: 22px; }
+    .file-guide {
+      margin-top: 22px;
+      padding: 30px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--white);
+    }
+    .file-guide h3 {
+      margin-bottom: 8px;
+      font-size: 30px;
+    }
+    .file-guide > p {
+      max-width: 68ch;
+      margin-bottom: 22px;
+      color: var(--ink-soft);
+    }
+    .file-guide dl { margin: 0; }
+    .file-row {
+      display: grid;
+      grid-template-columns: minmax(220px, 0.8fr) minmax(0, 1.6fr);
+      gap: 28px;
+      padding: 17px 0;
+      border-top: 1px solid var(--line);
+    }
+    .file-row dt { font-weight: 750; }
+    .file-row dd { margin: 0; color: var(--ink-soft); }
     pre {
       max-width: 100%;
       margin: 0;
@@ -209,7 +235,8 @@
     }
     .rules li {
       padding: 20px;
-      border-left: 4px solid var(--blue);
+      border: 1px solid var(--line);
+      border-radius: 10px;
       background: var(--white);
     }
     .rules strong { display: block; margin-bottom: 4px; }
@@ -245,6 +272,7 @@
     }
     @media (max-width: 800px) {
       .idea, .levels, .layout, .rules { grid-template-columns: 1fr; }
+      .file-row { grid-template-columns: 1fr; gap: 7px; }
       .hero { padding: 64px 0 52px; }
       section.content { padding: 52px 0; }
       .cta-inner, .footer-inner { align-items: flex-start; flex-direction: column; }
@@ -254,6 +282,7 @@
       .nav-inner { padding: 10px 0; }
       .nav-links a:not(.button) { display: none; }
       .card { padding: 24px; }
+      .file-guide { padding: 24px; }
       .actions { flex-direction: column; }
       .button { width: 100%; }
     }
@@ -376,6 +405,56 @@
   skills/</pre>
           </div>
         </div>
+        <section class="file-guide" aria-labelledby="file-guide-title">
+          <h3 id="file-guide-title">What lives where</h3>
+          <p>The company layer separates durable knowledge from live operating state, so the agent knows which file is authoritative for each kind of information.</p>
+          <dl>
+            <div class="file-row">
+              <dt><code>CLAUDE.md</code> and <code>AGENTS.md</code></dt>
+              <dd>The same root map for Claude Code and Codex. These files explain who you are, the rules the agent follows, and where everything else lives. Keep them identical.</dd>
+            </div>
+            <div class="file-row">
+              <dt><code>brain/</code></dt>
+              <dd>Slow-changing company knowledge. <code>Company.md</code> holds durable facts about the business, while <code>People/</code> holds context about important working relationships.</dd>
+            </div>
+            <div class="file-row">
+              <dt><code>brain/_source-docs/</code></dt>
+              <dd>Read-only copies of the documents used to build the brain. They are evidence, not the refined context the agent reads on every run.</dd>
+            </div>
+            <div class="file-row">
+              <dt><code>operating-system/</code></dt>
+              <dd>The fast-changing layer for current priorities, open work, decisions, debriefs, waiting items, reflections, and the weekly rhythm.</dd>
+            </div>
+            <div class="file-row">
+              <dt><code>current-context.md</code></dt>
+              <dd>The live state of play: what matters now, what is in flight, and what recently changed. Update it whenever the picture moves.</dd>
+            </div>
+            <div class="file-row">
+              <dt><code>GLOBAL_TASKS.md</code></dt>
+              <dd>One authoritative list of open actions across the company. It is the control plane for today, this week, soon, and parked work.</dd>
+            </div>
+            <div class="file-row">
+              <dt><code>DECISIONS.md</code></dt>
+              <dd>The durable record of decisions and their reasoning, so settled questions do not need to be reopened from memory.</dd>
+            </div>
+            <div class="file-row">
+              <dt><code>DEBRIEF_LOG.md</code> and <code>REFLECTION_LOG.md</code></dt>
+              <dd>Debriefs capture what happened and changed. Reflections capture reusable lessons about how the company and the agent should work.</dd>
+            </div>
+            <div class="file-row">
+              <dt><code>WAITING_FOR.md</code></dt>
+              <dd>Work that is blocked on another person or event, with enough context to follow it up instead of letting it disappear.</dd>
+            </div>
+            <div class="file-row">
+              <dt><code>WEEKLY_UPDATE.md</code></dt>
+              <dd>The latest approved summary of progress, priorities, decisions, risks, and next actions.</dd>
+            </div>
+            <div class="file-row">
+              <dt><code>skills/</code></dt>
+              <dd>Repeatable workflows for debriefs, reflections, morning sweeps, weekly updates, and meeting notes. Each skill defines how finished work is routed back into the right files.</dd>
+            </div>
+          </dl>
+        </section>
       </div>
     </section>
 
