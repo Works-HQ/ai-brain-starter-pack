@@ -65,6 +65,31 @@ Think of the runtime as rented. The harness, the model, the interface: that laye
 
 This method grew from using AI agents on real operating work, then reducing the setup to the parts that kept earning their place. The personal layer came first: standing context, three homes, debrief, and reflect. The company layer followed when the same problem appeared across shared knowledge, decisions, people, and weekly work. The method has been taught, used, corrected, and simplified through repeated delivery. This repository is the public version of that lineage.
 
+## Further reading
+
+When you are ready to go deep, these are the pieces worth your time. Different builders arriving at the same idea from different directions: files, context, and a rhythm that keeps them current.
+
+For the method in long form, start with our own walkthrough: [The AI Brain Layer](https://workshq.com.au/resources/ai-brain-layer/) on the Works site.
+
+**Company brains in the wild**
+
+- [GBrain, by Garry Tan](https://github.com/garrytan/gbrain). An open-source company brain from the President of Y Combinator, MIT licensed, with a [companion eval repo](https://github.com/garrytan/gbrain-evals). The closest open build of the same idea. Read the structure, then notice how much of it is plain files.
+- [How We Built Our Knowledge Base, by Cerebras](https://www.cerebras.ai/blog/how-we-built-our-knowledge-base). An engineering team's version of the same problem. Their core call: extract from where information already lives instead of forcing everything into one platform, and scope context per project so answers stay high-signal.
+- [The 5-Layer Company Brain, by Eric Siu](https://x.com/ericosiu/status/2060415100603781497) and his follow-up, [Everything You Need to Build a Company Brain](https://x.com/ericosiu/status/2089762541412950164). Capture, retrieval, source truth, permissions, and feedback, then skills, evals, and loops. The second piece is the best single argument for giving every skill a definition of done.
+
+**Context and method**
+
+- [Context is King, by Alex Lieberman](https://x.com/businessbarista/status/2061983277263601672). Why the operator who manages context best gets the most out of AI, with a framework that maps almost one-to-one onto the files in this pack.
+- [AI Strategy Should Be a Skill Library, by Hiten Shah](https://x.com/hnshah/status/2062647149582750101). The case for codified, repeatable workflows as the asset you actually own. The `skills/` folder here is this argument in practice.
+- [AI Second Brains Decay, by Cole Medin](https://www.linkedin.com/posts/cole-medin-727752184_ai-second-brains-are-incredibly-useful-but-activity-7491493447535800321-6elJ). State versus event, and why brains rot without an update rhythm. This is the exact problem the debrief and reflect loop exists to solve.
+
+**The bigger picture**
+
+- [How to Build an AI-Native Services Company, by Y Combinator](https://youtu.be/gSNFJbgoaHI). Eleven minutes on where this way of working is heading commercially.
+- [Jeff Dean at Princeton](https://www.youtube.com/watch?v=UTTeXZrpMR0). The Chief Scientist of Google DeepMind on one human directing a hundred agents, and why context is the bottleneck.
+- [How Teams Actually Scale With AI, Tiago Forte and Rachel Woods](https://www.youtube.com/watch?v=nvuAt8sl7Ag). The human side: how teams adopt this without it collapsing into one enthusiast's side project.
+- [How to Get Your Company AI-Pilled, by Geoff Charles](https://x.com/geoffintech/status/2042002590758572377). Ramp's VP of Product on driving adoption inside a real company.
+
 ## Licence
 
 MIT. Use it, adapt it, and teach it. See [LICENSE](LICENSE).
