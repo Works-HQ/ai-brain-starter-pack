@@ -35,6 +35,10 @@ If it takes longer, stop adding structure. Remove steps, shorten files, and get 
 
 The company level takes longer because source documents need human review. Its quickstart gives you a trustworthy first pass, then the weekly rhythm improves it through use.
 
+## If you use Claude and Codex
+
+Use one deployed brain, not one copy per tool. [The shared-brain guide](SHARED-BRAIN.md) shows how `CLAUDE.md` and `AGENTS.md` can route both runtimes into the same context, memory, tasks, history, and skills.
+
 ## Keep your filled-in brain private
 
 This starter pack is public. Your filled-in brain is not. Once these files hold real names, deals, numbers, and history, they are confidential company records that happen to live in markdown.

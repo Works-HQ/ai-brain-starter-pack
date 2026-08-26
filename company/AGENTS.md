@@ -2,7 +2,7 @@
 
 This is the first file your AI reads on every run. It tells the AI who you are, how you work, and where everything lives. Keep it lean. Fill the placeholders, delete the guidance notes once you have, and add to it as your world gets clearer.
 
-`CLAUDE.md` and `AGENTS.md` in your deployed folder are identical. If you edit one, make the same edit to the other.
+`CLAUDE.md` is canonical. In your deployed folder, point `AGENTS.md` to it with a relative symlink where supported. Otherwise generate an identical copy and check for drift. Never maintain two hand-edited instruction files.
 
 ---
 

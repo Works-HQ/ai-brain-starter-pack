@@ -22,7 +22,7 @@ Any agent that can read and write files in a folder. Claude Code, Codex, and Gem
 
 ### Why do some packages contain both CLAUDE.md and AGENTS.md?
 
-Different tools look for different context filenames. The company package keeps identical copies for Claude Code and Codex. If you use Gemini CLI, copy `CLAUDE.md` to `GEMINI.md`. Keep the contents aligned.
+Different tools look for different context filenames. Claude Code reads `CLAUDE.md`; Codex reads `AGENTS.md`. They should be two entry doors into the same brain, not two hand-maintained systems. Prefer a relative symlink from `AGENTS.md` to the canonical `CLAUDE.md` where supported. Otherwise use a generated identical mirror and check for drift. See the [shared-brain guide](SHARED-BRAIN.md).
 
 ## The personal level
 

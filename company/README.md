@@ -24,7 +24,7 @@ Use copies of source documents. The mining workflow treats them as read-only.
 
 Copy the contents of this `company/` folder into your deployed root. Copy the sibling `skills/` folder into that same root.
 
-Keep both `CLAUDE.md` and `AGENTS.md`. Fill the placeholders in both with the same information and keep the files identical. If you use Gemini CLI, copy CLAUDE.md to GEMINI.md.
+The package ships both `CLAUDE.md` and `AGENTS.md` as identical templates. In your deployed folder, make `CLAUDE.md` canonical and use a relative symlink from `AGENTS.md` where your filesystem and tools support it. Otherwise, keep `AGENTS.md` as a generated identical copy and check for drift whenever the instructions change. Do not maintain two hand-edited versions. If you use Gemini CLI, route GEMINI.md to the same instructions.
 
 ### 2. Create the live operating files, 5 minutes
 

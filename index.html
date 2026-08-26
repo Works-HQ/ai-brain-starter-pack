@@ -160,6 +160,58 @@
       font-size: clamp(36px, 5vw, 60px);
     }
     .idea-copy { color: var(--ink-soft); }
+    .runtime-architecture {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 54px minmax(0, 1.25fr) 54px minmax(0, 1fr);
+      align-items: stretch;
+      margin-top: 8px;
+    }
+    .runtime-card,
+    .brain-home {
+      display: flex;
+      min-width: 0;
+      min-height: 250px;
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--white);
+      flex-direction: column;
+    }
+    .brain-home {
+      border: 2px solid var(--blue);
+      background: #f3f5ff;
+    }
+    .runtime-card h3,
+    .brain-home h3 {
+      margin: 10px 0 22px;
+      font-size: 30px;
+    }
+    .runtime-entry {
+      margin-top: auto;
+      color: var(--ink-soft);
+      font-size: 14px;
+    }
+    .runtime-entry code { display: inline-block; margin-bottom: 6px; }
+    .brain-home ul { margin: auto 0 0; padding-left: 20px; color: var(--ink-soft); font-size: 14px; }
+    .brain-home li { margin: 4px 0; }
+    .connector {
+      display: grid;
+      place-items: center;
+      color: var(--blue);
+      font-size: 25px;
+      font-weight: 800;
+    }
+    .shared-proof {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      margin-top: 24px;
+      padding: 24px;
+      border-left: 3px solid var(--blue);
+      background: var(--soft);
+    }
+    .shared-proof p { max-width: 67ch; margin: 0; color: var(--ink-soft); }
     .levels {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -328,6 +380,10 @@
     }
     @media (max-width: 800px) {
       .idea, .levels, .layout, .rules { grid-template-columns: 1fr; }
+      .runtime-architecture { grid-template-columns: 1fr; gap: 12px; }
+      .runtime-card, .brain-home { min-height: auto; }
+      .connector { min-height: 36px; transform: rotate(90deg); }
+      .shared-proof { align-items: flex-start; flex-direction: column; }
       .brain-process { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .process-step::after { display: none; }
       .file-row { grid-template-columns: 1fr; gap: 7px; }
@@ -353,6 +409,7 @@
       <a class="wordmark" href="https://github.com/Works-HQ/ai-brain-starter-pack">AI Brain Starter Pack</a>
       <nav class="nav-links" aria-label="Primary navigation">
         <a href="./START-HERE.md">Start here</a>
+        <a href="#shared-brain">Shared brain</a>
         <a href="./FAQ.md">FAQ</a>
         <a class="button secondary" href="https://github.com/Works-HQ/ai-brain-starter-pack">View on GitHub</a>
       </nav>
@@ -379,6 +436,44 @@
         <div class="idea-copy">
           <p>Chats end. Files persist. A small set of routed files gives your agent stable context about who you are, what the company knows, what is happening now, and how repeated work should run.</p>
           <p>The point is not to collect everything. The point is to give each kind of information one home, then keep those homes current through real work.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content" id="shared-brain" aria-labelledby="shared-brain-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">One brain, multiple agents</p>
+          <h2 id="shared-brain-title">The runtime is rented. The brain is owned.</h2>
+          <p>Claude and Codex enter through different instruction files, then work from the same context, memory, tasks, history, and skills inside one folder you control.</p>
+        </div>
+        <div class="runtime-architecture" aria-label="Claude and Codex connected to one shared AI brain">
+          <article class="runtime-card">
+            <p class="level-number">Runtime A</p>
+            <h3>Claude</h3>
+            <p class="runtime-entry"><code>CLAUDE.md</code><br>Routes Claude into the owned brain.</p>
+          </article>
+          <div class="connector" aria-hidden="true">→</div>
+          <article class="brain-home">
+            <p class="level-number">Owned layer</p>
+            <h3>Your AI Brain folder</h3>
+            <ul>
+              <li>standing and current context</li>
+              <li>visible memory and history</li>
+              <li>one list of open tasks</li>
+              <li>canonical shared skills</li>
+            </ul>
+          </article>
+          <div class="connector" aria-hidden="true">←</div>
+          <article class="runtime-card">
+            <p class="level-number">Runtime B</p>
+            <h3>Codex</h3>
+            <p class="runtime-entry"><code>AGENTS.md</code><br>Routes Codex into the same owned brain.</p>
+          </article>
+        </div>
+        <div class="shared-proof">
+          <p>Use one canonical instruction file with a relative symlink or generated mirror. Hidden tool memory can cache the brain, but it must not become the only copy. Prove the setup by making one approved update through Claude and reading it back through Codex.</p>
+          <a class="button secondary" href="./shared-brain.html">Read the visual guide</a>
         </div>
       </div>
     </section>
@@ -499,7 +594,7 @@
           <dl>
             <div class="file-row">
               <dt><code>CLAUDE.md</code> and <code>AGENTS.md</code></dt>
-              <dd>The same root map for Claude Code and Codex. These files explain who you are, the rules the agent follows, and where everything else lives. Keep them identical.</dd>
+              <dd>Two entry doors into the same brain. Make <code>CLAUDE.md</code> canonical, then point <code>AGENTS.md</code> to it with a relative symlink where supported, or keep a generated identical mirror with a drift check.</dd>
             </div>
             <div class="file-row">
               <dt><code>brain/</code></dt>

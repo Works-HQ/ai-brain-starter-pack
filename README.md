@@ -14,6 +14,31 @@ Your conversations disappear from view. A small, routed set of files persists. O
 
 The value is not a giant archive. It is knowing where each kind of information belongs, then using a debrief and reflection rhythm to keep those files current.
 
+## One brain, multiple agents
+
+The runtime is rented. The brain is owned.
+
+Claude and Codex enter through different instruction files, but they can work from the same brain. Claude Code reads `CLAUDE.md`. Codex reads `AGENTS.md`. Both entry files should route to the same visible context, memory, tasks, history, and skills inside one folder you control.
+
+```text
+AI Brain/
+  CLAUDE.md
+  AGENTS.md -> CLAUDE.md
+  about-me.md
+  working-preferences.md
+  current-context.md
+  TASKS.md
+  debrief-history.log
+  memory/
+  skills/
+```
+
+Prefer a relative symlink from `AGENTS.md` to the canonical `CLAUDE.md` when your filesystem and tools support it. Otherwise, generate an identical copy and add a drift check. Do not maintain two hand-edited sets of instructions.
+
+Hidden tool memory can cache or point to these files, but it should never be the only copy. The owned folder is canonical. That is what lets a fresh Claude session and a fresh Codex session inherit the same approved knowledge, and lets an update made through one runtime survive when you switch to the other.
+
+[Read the visual overview](shared-brain.html), then [set up one shared brain for Claude and Codex](SHARED-BRAIN.md).
+
 ## The two-level ladder
 
 ### Level 1: you
@@ -55,6 +80,8 @@ Thirty minutes is a design test, not a claim that your whole working life can be
 - [`training/`](training/facilitator-guide.md) contains ready-to-run personal and company sessions.
 - [`FAQ.md`](FAQ.md) answers common setup and upkeep questions.
 - [`GLOSSARY.md`](GLOSSARY.md) defines the system's terms in plain English.
+- [`SHARED-BRAIN.md`](SHARED-BRAIN.md) connects Claude and Codex to one owned brain without duplicating the underlying knowledge.
+- [`shared-brain.html`](shared-brain.html) is the model-neutral visual overview: one diagram, the core rules, and a portability test.
 - [`index.html`](index.html) is a dependency-free visual overview.
 
 ## The four hard rules
@@ -69,6 +96,8 @@ Thirty minutes is a design test, not a claim that your whole working life can be
 The system is tool-agnostic. Claude Code, Codex, and Gemini CLI are examples, not requirements. Any capable agent that can read and write files in your folder can use it.
 
 Claude Code reads `CLAUDE.md`. Codex reads `AGENTS.md`. If you use Gemini CLI, copy CLAUDE.md to GEMINI.md.
+
+Those are entry doors, not separate brains. Route them to the same files. Prefer one canonical instruction file with a symlink or generated mirror instead of maintaining several hand-edited versions.
 
 Think of the runtime as rented. The harness, the model, the interface: that layer belongs to whoever built it, and it will keep changing whether you like it or not. Your brain, your skills, and your loops are the part you own. They are plain files, they are portable across engines, and they are the part that keeps compounding after this quarter's model gets replaced by next quarter's.
 
