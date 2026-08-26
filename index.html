@@ -185,6 +185,62 @@
     .card p { margin-top: 16px; color: var(--ink-soft); }
     .card ul { margin: 20px 0 26px; padding-left: 20px; }
     .card li { margin: 7px 0; }
+    .brain-process {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      counter-reset: brain-step;
+    }
+    .process-step {
+      position: relative;
+      min-width: 0;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--white);
+      counter-increment: brain-step;
+    }
+    .process-step::before {
+      display: block;
+      margin-bottom: 18px;
+      color: var(--blue);
+      content: "0" counter(brain-step);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+    }
+    .process-step:not(:last-child)::after {
+      position: absolute;
+      z-index: 1;
+      top: 50%;
+      right: -12px;
+      width: 22px;
+      height: 22px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--paper);
+      color: var(--blue);
+      content: "\2192";
+      font-size: 14px;
+      font-weight: 800;
+      line-height: 20px;
+      text-align: center;
+      transform: translateY(-50%);
+    }
+    .process-step h3 { font-size: 24px; }
+    .process-step p {
+      margin: 12px 0 0;
+      color: var(--ink-soft);
+      font-size: 15px;
+      line-height: 1.55;
+    }
+    .process-loop {
+      max-width: 74ch;
+      margin: 24px 0 0;
+      padding-left: 18px;
+      border-left: 3px solid var(--blue);
+      color: var(--ink-soft);
+    }
     .layout {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -272,6 +328,8 @@
     }
     @media (max-width: 800px) {
       .idea, .levels, .layout, .rules { grid-template-columns: 1fr; }
+      .brain-process { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .process-step::after { display: none; }
       .file-row { grid-template-columns: 1fr; gap: 7px; }
       .hero { padding: 64px 0 52px; }
       section.content { padding: 52px 0; }
@@ -282,6 +340,7 @@
       .nav-inner { padding: 10px 0; }
       .nav-links a:not(.button) { display: none; }
       .card { padding: 24px; }
+      .brain-process { grid-template-columns: 1fr; }
       .file-guide { padding: 24px; }
       .actions { flex-direction: column; }
       .button { width: 100%; }
@@ -359,6 +418,35 @@
             <a class="button secondary" href="./company/README.md">Follow Level 2</a>
           </article>
         </div>
+      </div>
+    </section>
+
+    <section class="content" aria-labelledby="process-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">How the brain operates</p>
+          <h2 id="process-title">Turn scattered knowledge into trusted context.</h2>
+          <p>The brain uses the same four steps whenever source material or a new lesson enters the system.</p>
+        </div>
+        <div class="brain-process">
+          <article class="process-step">
+            <h3>Evidence</h3>
+            <p>Keep the original files, meeting notes, reports, and system records untouched.</p>
+          </article>
+          <article class="process-step">
+            <h3>Refine</h3>
+            <p>Extract the useful facts, decisions, procedures, and preferences. Cite the source and flag conflicts.</p>
+          </article>
+          <article class="process-step">
+            <h3>Review</h3>
+            <p>A person approves, corrects, or rejects the proposed knowledge before the working brain changes.</p>
+          </article>
+          <article class="process-step">
+            <h3>Approved brain</h3>
+            <p>File the checked knowledge where the agent can retrieve the smallest useful slice for the next job.</p>
+          </article>
+        </div>
+        <p class="process-loop">Work creates new evidence. Debriefs capture what changed, approved lessons return to the brain, and the next job starts from checked facts.</p>
       </div>
     </section>
 

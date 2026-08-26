@@ -28,6 +28,17 @@ Once the personal loop works, add durable company knowledge, people files, a sha
 
 [Follow the company quickstart](company/README.md).
 
+## How the brain operates
+
+The same four steps turn scattered business knowledge into context an AI agent can use:
+
+1. **Evidence.** Keep the original files, meeting notes, reports, and system records. They are the source material and stay untouched.
+2. **Refine.** Pull out the facts, decisions, procedures, and preferences that matter. Cite the source and flag anything that conflicts or needs confirmation.
+3. **Review.** A person checks the proposed knowledge, then approves, corrects, or rejects it before the working brain changes.
+4. **Approved brain.** Store the checked knowledge in the right brain file. The agent can now retrieve the smallest useful slice for the next job instead of searching the whole archive.
+
+The loop keeps running. Work creates new evidence, debriefs capture what changed, and approved lessons return to the brain. The source material remains traceable, and each future job starts from checked facts instead of another search through the archive.
+
 ## The 30-minute promise
 
 A fresh reader should be able to make the personal level useful within 30 minutes. Useful means the agent has standing context, the three homes exist, the skills can find them, and one real debrief has updated the correct files with approval.
