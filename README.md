@@ -140,6 +140,8 @@ For the method in long form, start with our own walkthrough: [The AI Brain Layer
 - [Jeff Dean at Princeton](https://www.youtube.com/watch?v=UTTeXZrpMR0). The Chief Scientist of Google DeepMind on one human directing a hundred agents, and why context is the bottleneck.
 - [How Teams Actually Scale With AI, Tiago Forte and Rachel Woods](https://www.youtube.com/watch?v=nvuAt8sl7Ag). The human side: how teams adopt this without it collapsing into one enthusiast's side project.
 - [How to Get Your Company AI-Pilled, by Geoff Charles](https://x.com/geoffintech/status/2042002590758572377). Ramp's VP of Product on driving adoption inside a real company.
+- [The Ontology of the Company Brain, by Slite](https://slite.com/ebooks/company-brain). A 149-person survey of the category: what people expect a brain to be, why only 17% have one that works, and teardowns of ten real architectures, the pattern in this pack among them.
+- [WikiSkill](https://arxiv.org/abs/2608.27454). The academic entry. Benchmarked evidence that keeping raw logs, a markdown knowledge layer, and executable skills as separate layers beats every alternative tested, and that the knowledge layer contributes the largest share of the gain.
 
 ## Licence
 
