@@ -237,6 +237,27 @@
     .card p { margin-top: 16px; color: var(--ink-soft); }
     .card ul { margin: 20px 0 26px; padding-left: 20px; }
     .card li { margin: 7px 0; }
+    .brain-parts {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .part-card {
+      min-width: 0;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--white);
+    }
+    .part-card h3 {
+      font-size: 24px;
+      color: var(--blue);
+    }
+    .part-card p {
+      margin: 12px 0 0;
+      color: var(--ink-soft);
+      font-size: 15px;
+    }
     .brain-process {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -384,6 +405,7 @@
       .runtime-card, .brain-home { min-height: auto; }
       .connector { min-height: 36px; transform: rotate(90deg); }
       .shared-proof { align-items: flex-start; flex-direction: column; }
+      .brain-parts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .brain-process { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .process-step::after { display: none; }
       .file-row { grid-template-columns: 1fr; gap: 7px; }
@@ -396,6 +418,7 @@
       .nav-inner { padding: 10px 0; }
       .nav-links a:not(.button) { display: none; }
       .card { padding: 24px; }
+      .brain-parts { grid-template-columns: 1fr; }
       .brain-process { grid-template-columns: 1fr; }
       .file-guide { padding: 24px; }
       .actions { flex-direction: column; }
@@ -516,12 +539,40 @@
       </div>
     </section>
 
+    <section class="content" aria-labelledby="parts-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">The four parts of a working brain</p>
+          <h2 id="parts-title">Capture. File. Maintain. Ask.</h2>
+          <p>Every brain in this pack, personal or company, does four jobs. A brain that does all four keeps compounding. A brain missing any one of them turns back into the stale wiki it replaced.</p>
+        </div>
+        <div class="brain-parts">
+          <article class="part-card">
+            <h3>Capture</h3>
+            <p>How work becomes raw material: debriefs, meeting notes, dictation, and the documents you already trust. Capture immediately, file later.</p>
+          </article>
+          <article class="part-card">
+            <h3>File</h3>
+            <p>Where knowledge lives: plain files, one home per kind of information. Current state is replaced in place, history is appended.</p>
+          </article>
+          <article class="part-card">
+            <h3>Maintain</h3>
+            <p>How the brain stays true: the debrief and reflect rhythm, plus a person approving changes before the working brain moves. Brains rot without a rhythm.</p>
+          </article>
+          <article class="part-card">
+            <h3>Ask</h3>
+            <p>How answers come out: the agent reads the smallest useful slice at the start of every session, and people ask the brain instead of interrupting a colleague.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section class="content" aria-labelledby="process-title">
       <div class="wrap">
         <div class="section-head">
           <p class="eyebrow">How the brain operates</p>
           <h2 id="process-title">Turn scattered knowledge into trusted context.</h2>
-          <p>The brain uses the same four steps whenever source material or a new lesson enters the system.</p>
+          <p>The four steps below are the write path: how raw material moves from Capture into File, with Review as the Maintain gate.</p>
         </div>
         <div class="brain-process">
           <article class="process-step">

@@ -53,9 +53,20 @@ Once the personal loop works, add durable company knowledge, people files, a sha
 
 [Follow the company quickstart](company/README.md).
 
+## The four parts of a working brain
+
+Every brain in this pack, personal or company, does four jobs.
+
+1. **Capture.** How work becomes raw material: debriefs, meeting notes, dictation, and the documents you already trust. Capture immediately, file later.
+2. **File.** Where knowledge lives: plain files, one home per kind of information. Current state is replaced in place, history is appended, and nothing important floats free.
+3. **Maintain.** How the brain stays true: the debrief and reflect rhythm, plus a person approving changes before the working brain moves. Brains rot without a rhythm; this is the part everyone skips.
+4. **Ask.** How answers come out: the agent reads the smallest useful slice at the start of every session, and people ask the brain instead of interrupting a colleague.
+
+A brain that does all four keeps compounding. A brain missing any one of them turns back into the stale wiki it replaced.
+
 ## How the brain operates
 
-The same four steps turn scattered business knowledge into context an AI agent can use:
+The four steps below are the write path: how raw material moves from Capture into File, with Review as the Maintain gate. The same four steps turn scattered business knowledge into context an AI agent can use:
 
 1. **Evidence.** Keep the original files, meeting notes, reports, and system records. They are the source material and stay untouched.
 2. **Refine.** Pull out the facts, decisions, procedures, and preferences that matter. Cite the source and flag anything that conflicts or needs confirmation.
