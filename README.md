@@ -53,6 +53,24 @@ Once the personal loop works, add durable company knowledge, people files, a sha
 
 [Follow the company quickstart](company/README.md).
 
+## Debrief and Reflect are included
+
+These two skills keep the brain useful after setup. Both work with the personal and company structures.
+
+### Debrief keeps the work current
+
+Run [Debrief](skills/debrief/SKILL.md) after a meeting or meaningful work session. It captures what happened, what you decided, what changed, and what needs doing next. It proposes updates to the right history, context, decision, and task files for your setup, then waits for approval before writing.
+
+Try: `Debrief this session.`
+
+### Reflect improves how the agent works
+
+Run [Reflect](skills/reflect/SKILL.md) when you correct the agent, notice a repeated problem, or review the week. It turns useful corrections and preferences into proposed guidance for next time. You choose which lessons to keep. Personal mode updates approved guidance in your context files. Company mode records the findings in `operating-system/REFLECTION_LOG.md` for a separate review before changing brain or skill files.
+
+Try: `Reflect on this session.`
+
+Copy the entire `skills/` folder into your deployed brain, keeping each skill in its own subfolder. Ask your agent to read `skills/debrief/SKILL.md` and `skills/reflect/SKILL.md` before using them. The [personal setup](you/README.md#4-check-the-skills-3-minutes) walks through the first run.
+
 ## The four parts of a working brain
 
 Every brain in this pack, personal or company, does four jobs.

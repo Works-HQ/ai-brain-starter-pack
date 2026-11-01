@@ -56,6 +56,8 @@ Read `three-homes.md` in this package if you want a worked explanation. A finish
 
 Confirm the deployed `skills/` folder contains five subfolders, each with a `SKILL.md` file. Start with `debrief` and `reflect`. The other skills can wait until the basic loop works.
 
+[Debrief](../skills/debrief/SKILL.md) captures the session's outcomes, decisions, changed state, and open tasks. Use it after meaningful work. [Reflect](../skills/reflect/SKILL.md) captures corrections, preferences, and lessons about how the agent should work. Use it when you correct the agent or review the week. Both show proposed changes and wait for your approval before writing.
+
 Tell your agent: `Read skills/debrief/SKILL.md and skills/reflect/SKILL.md. Confirm that you can use them in personal mode. Do not write anything yet.`
 
 ### 5. Run one real debrief, 8 minutes

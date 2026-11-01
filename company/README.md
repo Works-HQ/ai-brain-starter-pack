@@ -26,6 +26,8 @@ Copy the contents of this `company/` folder into your deployed root. Copy the si
 
 The package ships both `CLAUDE.md` and `AGENTS.md` as identical templates. In your deployed folder, make `CLAUDE.md` canonical and use a relative symlink from `AGENTS.md` where your filesystem and tools support it. Otherwise, keep `AGENTS.md` as a generated identical copy and check for drift whenever the instructions change. Do not maintain two hand-edited versions. If you use Gemini CLI, route GEMINI.md to the same instructions.
 
+Two included skills maintain the system. [Debrief](../skills/debrief/SKILL.md) files session outcomes into the debrief log, decisions, tasks, and waiting items. [Reflect](../skills/reflect/SKILL.md) records corrections and weekly lessons in the reflection log, with proposed brain or skill changes left for a separate review. Both show their proposed writes and wait for approval.
+
 ### 2. Create the live operating files, 5 minutes
 
 Inside `operating-system/`, copy these templates up one level and remove the placeholder examples you do not need:
