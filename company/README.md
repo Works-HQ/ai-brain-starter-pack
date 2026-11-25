@@ -113,6 +113,16 @@ company-folder/
 
 The package also includes a fictional example under `examples/`. It shows the expected depth, but it is not part of your deployed system.
 
+## Growing `brain/` for real operations
+
+Start with `Company.md` and one file in `People/`. As the brain earns its keep, add entity folders that match how your business actually runs, one file per entity, updated in place rather than duplicated:
+
+- `brain/Suppliers/` (or `Subbies/`, `Partners/`, `Clients/`) for key external relationships
+- `brain/Projects/` for active jobs, builds, or client engagements
+- `brain/Procedures/` for repeatable SOPs, quoting standards, and checklists
+
+Your brain sits alongside existing operational software (Google Drive, SharePoint, OneDrive, CRM, accounting, or job management). Live systems still own live numbers, job status, and schedules.
+
 ## You know it worked when
 
 - `brain/Company.md` contains sourced facts from real documents, not blank prompts or invented claims

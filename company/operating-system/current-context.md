@@ -6,6 +6,17 @@
 
 ---
 
+## Owned current states
+
+One current value per subject. Replace the row in place and update the Confirmed date whenever reality moves. Never stack a second line for the same subject. Live systems (CRM, accounting, job software) still win if a row goes stale.
+
+| State | Current value | Confirmed |
+|---|---|---|
+| `<pricing / active offer / key deadline / system URL>` | `<current approved value>` | `<YYYY-MM-DD>` |
+| `<owner or live target>` | `<current approved value>` | `<YYYY-MM-DD>` |
+
+---
+
 ## What I am focused on right now
 
 `<1-3 lines. The centre of gravity this week or this month. The thing everything else orbits.>`

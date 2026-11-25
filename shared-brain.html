@@ -188,7 +188,7 @@
       <nav aria-label="Article navigation">
         <a href="#architecture">Diagram</a>
         <a href="#how">How it works</a>
-        <a href="./SHARED-BRAIN.md">Setup guide</a>
+        <a href="https://github.com/Works-HQ/ai-brain-starter-pack/blob/main/SHARED-BRAIN.md">Setup guide</a>
       </nav>
     </div>
   </header>
@@ -324,7 +324,7 @@
         <p>Start with one useful personal brain, then connect the runtimes you actually use.</p>
       </div>
       <div class="actions">
-        <a class="button" href="./SHARED-BRAIN.md">Open the setup guide</a>
+        <a class="button" href="https://github.com/Works-HQ/ai-brain-starter-pack/blob/main/SHARED-BRAIN.md">Open the setup guide</a>
         <a class="button secondary" href="./index.html">Back to the Starter Pack</a>
       </div>
     </div>
@@ -333,5 +333,126 @@
   <footer>
     <div class="shell">A public guide from the open-source AI Brain Starter Pack.</div>
   </footer>
+<!-- deck-analytics beacon: Works shared-asset engagement -->
+<script>
+/* deck-analytics beacon: Works portal engagement v2. No form or keystroke contents. */
+(() => {
+  'use strict';
+  const COLLECTOR = 'https://works-deck-analytics.netlify.app';
+  const DECK = 'ai-brain-starter-pack';
+  if (window.__worksEngagement || navigator.webdriver || /Headless|bot\b|crawl|spider|preview/i.test(navigator.userAgent)) return;
+  window.__worksEngagement = true;
+  const store = {
+    get(key) { try { return localStorage.getItem(key); } catch (_) { return null; } },
+    set(key, value) { try { localStorage.setItem(key, value); } catch (_) {} }
+  };
+  const visitor = store.get('_dav') || (crypto.randomUUID ? crypto.randomUUID() : Date.now().toString(36) + Math.random().toString(36).slice(2));
+  store.set('_dav', visitor);
+  const params = new URLSearchParams(location.search);
+  const recipient = (params.get('rt') || params.get('v') || store.get('_works_rec_' + DECK) || '').slice(0, 80) || null;
+  if (recipient) store.set('_works_rec_' + DECK, recipient);
+  const page = location.protocol === 'file:' ? '/deck-download/' : location.pathname;
+  let referrer = null;
+  try { const r = new URL(document.referrer); if (r.protocol === 'http:' || r.protocol === 'https:') referrer = r.origin + r.pathname; } catch (_) {}
+  let queue = Promise.resolve();
+  function send(type, extra, unload = false) {
+    const payload = Object.assign({ t: type, deck: DECK, v: visitor, rec: recipient, ua: navigator.userAgent,
+      ref: referrer, dev: /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent) ? 'mobile' : 'desktop',
+      w: innerWidth, title: document.title.slice(0, 120) }, extra || {});
+    const body = JSON.stringify(payload);
+    if (unload && navigator.sendBeacon) {
+      // Preserve ordering with earlier open/action writes before the final delta.
+      queue.finally(() => navigator.sendBeacon(COLLECTOR + '/track', new Blob([body], {type:'text/plain'})));
+      return;
+    }
+    queue = queue.then(() => fetch(COLLECTOR + '/track', {method:'POST',body,keepalive:true,headers:{'Content-Type':'text/plain'}})).catch(() => {});
+  }
+  const clean = text => String(text || '').replace(/\s+/g, ' ').trim().slice(0, 100);
+  let activeMs = 0, dwell = {}, maxIdx = -1, bucket = '', last = performance.now();
+  let lastInput = Date.now(), lastDepth = 0, seen = new Set();
+  const slides = Array.from(document.querySelectorAll('section.slide'));
+  const hasFocus = () => !document.hidden && document.hasFocus() && Date.now() - lastInput < 60000;
+  function settle() {
+    const now = performance.now(), delta = Math.max(0, Math.min(5000, now - last));
+    if (hasFocus()) { activeMs += delta; if (bucket) dwell[bucket] = (dwell[bucket] || 0) + delta; }
+    last = now;
+  }
+  function action(name, href) { send('action', {action:clean(name).slice(0,120),href:href || null}); }
+  function once(name) { if (!seen.has(name)) { seen.add(name); action(name); } }
+  function visibleArea(el) {
+    const r = el.getBoundingClientRect();
+    return Math.max(0, Math.min(innerHeight,r.bottom) - Math.max(0,r.top)) * Math.max(0, Math.min(innerWidth,r.right) - Math.max(0,r.left));
+  }
+  function selectView() {
+    settle();
+    if (slides.length) {
+      let best = innerWidth > 700 ? slides.find(el => el.classList.contains('active') || el.classList.contains('is-active')) : null;
+      let area = 0;
+      if (!best) for (const el of slides) {
+        const style = getComputedStyle(el);
+        if (style.visibility === 'hidden' || style.display === 'none' || Number(style.opacity) === 0) continue;
+        const a = visibleArea(el); if (a > area) { area = a; best = el; }
+      }
+      if (best) {
+        const i = slides.indexOf(best), label = 'slide-' + String(i+1).padStart(2,'0') + ': ' + clean(best.querySelector('h1,h2,.statement')?.textContent || best.id || 'Presentation');
+        maxIdx = Math.max(maxIdx, i); bucket = label; once('view:' + label);
+      }
+    } else if (page.includes('company-map')) {
+      const hash = location.hash.replace(/^#/, '') || 'company';
+      bucket = 'company-map:' + hash;
+      once((/^o\d+$/.test(hash) ? 'opportunity-view:' : 'workflow-view:') + hash);
+    } else if (page.includes('map-check')) {
+      bucket = 'current-state:' + (location.hash.replace(/^#/, '') || 'overview'); once('view:' + bucket);
+    } else {
+      let best = null, area = 0;
+      for (const el of document.querySelectorAll('main > section')) { const a = visibleArea(el); if(a>area) { area=a;best=el; } }
+      bucket = best ? 'section:' + clean(best.querySelector('h2,h3')?.textContent || best.id) : 'page:' + page;
+      once('view:' + bucket);
+    }
+    const extent = document.documentElement.scrollHeight - innerHeight;
+    const depth = extent > 0 ? Math.min(100,Math.round(scrollY / extent * 100)) : 100;
+    for(const threshold of (slides.length && innerWidth>700 ? [] : [25,50,75,100])) if(depth>=threshold && lastDepth<threshold) once('scroll-depth:' + page + (location.hash || '') + ':' + threshold);
+    lastDepth = Math.max(lastDepth, depth);
+  }
+  function flush(unload = false) {
+    settle();
+    if (activeMs < 1 && !Object.keys(dwell).length) return;
+    const delta = {activeMs:Math.round(activeMs),slides:Object.fromEntries(Object.entries(dwell).map(([k,v])=>[k,Math.round(v)])),maxIdx,total:slides.length};
+    activeMs=0;dwell={};send('session',delta,unload);
+  }
+  function userActive() { settle(); lastInput=Date.now(); }
+  for(const name of ['pointerdown','pointermove','keydown','touchstart','wheel']) document.addEventListener(name,userActive,{passive:true});
+  document.addEventListener('click',e=>{
+    const el=e.target.closest?.('a,button,[data-action]');if(!el)return;
+    const a=el.closest('a');const declared=el.getAttribute('data-action');
+    if(declared)action('cta:'+declared);
+    if(a){
+      let url;try{url=new URL(a.getAttribute('href'),location.href);}catch(_){return;}
+      if(a.hasAttribute('download')||url.pathname.includes('/downloads/')||/\.pdf$/i.test(url.pathname))action('download:'+url.pathname,url.pathname);
+      else if(url.origin===location.origin){
+        action('navigate:'+url.pathname+url.hash,url.pathname+url.hash);
+        if(recipient && !url.searchParams.has('rt') && !url.searchParams.has('v')){url.searchParams.set('rt',recipient);a.href=url.href;}
+      }else if(['mailto:','tel:'].includes(url.protocol)||/savvycal|cal\.com|calendar/.test(url.hostname)) action('contact:'+url.protocol);
+      else action('outbound:'+url.hostname,url.origin+url.pathname);
+    }
+    const workflow=el.getAttribute('data-go-wf');if(workflow)action('workflow-step:'+workflow+':'+(el.getAttribute('data-go-step')||''));
+    if(el.id==='next'||el.id==='prev')action('presentation-control:'+el.id);
+  },true);
+  document.addEventListener('toggle',e=>{
+    const d=e.target;if(d.tagName==='DETAILS'&&d.open) action('expand:'+(d.id||clean(d.querySelector('summary')?.textContent)));
+  },true);
+  addEventListener('hashchange',()=>{flush();lastDepth=0;selectView();});
+  addEventListener('scroll',()=>{userActive();selectView();},{passive:true});
+  addEventListener('focus',()=>{last=performance.now();lastInput=Date.now();selectView();});
+  addEventListener('blur',()=>{settle();flush();});
+  document.addEventListener('visibilitychange',()=>{if(document.hidden)flush(true);else{last=performance.now();lastInput=Date.now();selectView();}});
+  addEventListener('pagehide',()=>flush(true));
+  if(slides.length)new MutationObserver(selectView).observe(document.getElementById('deckStage')||document.body,{subtree:true,attributes:true,attributeFilter:['class']});
+  setInterval(settle,1000);setInterval(()=>flush(),15000);
+  send('open',{total:slides.length});action('page-view:'+page);selectView();
+})();
+
+</script>
+
 </body>
 </html>

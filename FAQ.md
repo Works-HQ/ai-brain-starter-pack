@@ -6,7 +6,7 @@ Common questions about building and running a file-based AI brain.
 
 ### Do I need to be technical?
 
-No. If you can make a folder, copy a file, and review a draft, you can use this method. The files are plain markdown. Your AI agent does the first-pass writing, then you decide what is true and what gets saved.
+No. If you can make a folder, copy a file, and review a draft, you can use this method. The files are plain text (markdown). Your AI agent does the first-pass writing, then you decide what is true and what gets saved. You do not need GitHub or a terminal to start: keep your working folder in Google Drive, OneDrive, or SharePoint, or hand this pack to whoever runs ops or IT.
 
 ### What do I build first?
 
@@ -54,7 +54,25 @@ Different information changes at different speeds. Durable facts may stay true f
 
 ### What is a company brain?
 
-A company brain is the refined, slow-changing context the agent should know about the business and its people. In this pack it lives under `brain/`, mainly in `brain/Company.md` and `brain/People/`. It is not a dump of every document and it is not the live task list.
+A company brain is the refined, slow-changing context the agent should know about the business and its people. In this pack it starts under `brain/` with `brain/Company.md` and `brain/People/`, and can grow into `Suppliers/`, `Subbies/`, `Projects/`, and `Procedures/` (SOPs) as needed. It is not a dump of every document and it is not the live task list.
+
+### Does this replace our CRM, accounting, or job management software?
+
+No. Keep three layers clear:
+
+1. **The brain** holds how the business works: standards, voice, decisions, key people, and procedures.
+2. **Source files** hold reference evidence (contracts, quotes, decks, meeting notes) kept read-only.
+3. **Live systems** (CRM, accounting, scheduling, job management) own what is true today: current prices, invoices, stock, and job status.
+
+The brain points to live systems and never tries to duplicate them.
+
+### What happens when two files or systems disagree?
+
+Follow three steps in order:
+
+1. **Live systems win** for anything changing day to day (account ownership, job status, pricing, invoices).
+2. **Approved beats draft.** A verified brain file or signed document beats a newer chat summary, meeting transcript, or unreviewed draft.
+3. **Recency breaks ties only** between sources with the same authority. If it is still unclear, the agent should show both sources and ask instead of guessing.
 
 ### What is the company operating system?
 
@@ -100,7 +118,7 @@ Stop the run and correct the routing rule before continuing. Move the informatio
 
 ### How do I know the system is going stale?
 
-You start correcting facts that the files should already hold. Current context describes last month. Open tasks are already finished. Decisions get reopened without their reasoning. Treat each of those as a maintenance signal and repair the smallest broken file or workflow.
+You start correcting facts that the files should already hold. Current context describes last month. Open tasks are already finished. Decisions get reopened without their reasoning. Treat each of those as a maintenance signal and repair the smallest broken file or workflow. Give every skill one named owner, and move unused skills into a `_Retired/` folder outside `skills/` so dead workflows stop cluttering the agent's context.
 
 ## Privacy
 

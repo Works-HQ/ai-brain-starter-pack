@@ -52,6 +52,15 @@ These paths are relative to your deployed root folder. They do not point back in
 
 ---
 
+## When two sources disagree (source-of-truth order)
+
+1. **Live systems win for what is true today.** Your CRM, accounting, scheduling, and job management software own current numbers, job status, and pricing. The brain points to them and never replaces them.
+2. **Verified and approved beats draft.** An approved brain file or signed document beats a newer chat summary, meeting transcript, or unreviewed draft.
+3. **Recency breaks ties only.** Newer wins only between sources with the same authority. If two sources still disagree, show both and ask instead of guessing.
+4. **Supersede, never silently stack.** Replace current state in place with a date. Append history to the log. Mark old decisions as superseded or move retired skills to `_Retired/` so old copies stop competing.
+
+---
+
 ## How to work with me
 
 - Read the relevant brain file before working on a business or person. Do not answer from a blank slate when context exists.

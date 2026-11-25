@@ -431,10 +431,10 @@
     <div class="wrap nav-inner">
       <a class="wordmark" href="https://github.com/Works-HQ/ai-brain-starter-pack">AI Brain Starter Pack</a>
       <nav class="nav-links" aria-label="Primary navigation">
-        <a href="./START-HERE.md">Start here</a>
-        <a href="#shared-brain">Shared brain</a>
+        <a href="https://github.com/Works-HQ/ai-brain-starter-pack/blob/main/START-HERE.md">Start here</a>
+        <a href="#levels">Start in 30 mins</a>
         <a href="#skills">Debrief &amp; Reflect</a>
-        <a href="./FAQ.md">FAQ</a>
+        <a href="https://github.com/Works-HQ/ai-brain-starter-pack/blob/main/FAQ.md">FAQ</a>
         <a class="button secondary" href="https://github.com/Works-HQ/ai-brain-starter-pack">View on GitHub</a>
       </nav>
     </div>
@@ -445,12 +445,12 @@
       <div class="wrap">
         <p class="eyebrow">A file-based memory for your AI agent</p>
         <h1>Stop starting from zero.</h1>
-        <p class="lead">Give your AI lasting memory of you and your company using plain markdown files, shared skills, and a simple operating rhythm.</p>
+        <p class="lead">Give your AI lasting memory of you and your company using plain text files, shared skills, and a simple operating rhythm.</p>
         <div class="actions">
-          <a class="button" href="./you/README.md">Start with you</a>
+          <a class="button" href="https://github.com/Works-HQ/ai-brain-starter-pack/blob/main/you/README.md">Start with you</a>
           <a class="button secondary" href="https://github.com/Works-HQ/ai-brain-starter-pack">View on GitHub</a>
         </div>
-        <p class="promise">The personal level should become useful within 30 minutes.</p>
+        <p class="promise">The personal level should become useful within 30 minutes. Not technical? Start with one plain folder in Google Drive, OneDrive, or SharePoint, or hand this link to whoever runs ops or IT.</p>
       </div>
     </section>
 
@@ -464,45 +464,7 @@
       </div>
     </section>
 
-    <section class="content" id="shared-brain" aria-labelledby="shared-brain-title">
-      <div class="wrap">
-        <div class="section-head">
-          <p class="eyebrow">One brain, multiple agents</p>
-          <h2 id="shared-brain-title">The runtime is rented. The brain is owned.</h2>
-          <p>Claude and Codex enter through different instruction files, then work from the same context, memory, tasks, history, and skills inside one folder you control.</p>
-        </div>
-        <div class="runtime-architecture" aria-label="Claude and Codex connected to one shared AI brain">
-          <article class="runtime-card">
-            <p class="level-number">Runtime A</p>
-            <h3>Claude</h3>
-            <p class="runtime-entry"><code>CLAUDE.md</code><br>Routes Claude into the owned brain.</p>
-          </article>
-          <div class="connector" aria-hidden="true">→</div>
-          <article class="brain-home">
-            <p class="level-number">Owned layer</p>
-            <h3>Your AI Brain folder</h3>
-            <ul>
-              <li>standing and current context</li>
-              <li>visible memory and history</li>
-              <li>one list of open tasks</li>
-              <li>canonical shared skills</li>
-            </ul>
-          </article>
-          <div class="connector" aria-hidden="true">←</div>
-          <article class="runtime-card">
-            <p class="level-number">Runtime B</p>
-            <h3>Codex</h3>
-            <p class="runtime-entry"><code>AGENTS.md</code><br>Routes Codex into the same owned brain.</p>
-          </article>
-        </div>
-        <div class="shared-proof">
-          <p>Use one canonical instruction file with a relative symlink or generated mirror. Hidden tool memory can cache the brain, but it must not become the only copy. Prove the setup by making one approved update through Claude and reading it back through Codex.</p>
-          <a class="button secondary" href="./shared-brain.html">Read the visual guide</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="content" aria-labelledby="levels-title">
+    <section class="content" id="levels" aria-labelledby="levels-title">
       <div class="wrap">
         <div class="section-head">
           <p class="eyebrow">The two-level ladder</p>
@@ -521,7 +483,7 @@
               <li><code>TASKS.md</code> for open tasks</li>
               <li>one real debrief</li>
             </ul>
-            <a class="button" href="./you/README.md">Follow Level 1</a>
+            <a class="button" href="https://github.com/Works-HQ/ai-brain-starter-pack/blob/main/you/README.md">Follow Level 1</a>
           </article>
           <article class="card">
             <p class="level-number">Level 2, company</p>
@@ -529,12 +491,12 @@
             <p>Mine durable company knowledge from real documents and connect it to a weekly operating layer.</p>
             <ul>
               <li><code>brain/Company.md</code> for durable context</li>
-              <li>People files for important relationships</li>
-              <li>operating files for live work</li>
+              <li><code>People/</code>, plus <code>Suppliers/</code>, <code>Projects/</code>, and <code>Procedures/</code> as you grow</li>
+              <li>operating files for live work and decisions</li>
               <li>five shared, dual-mode skills</li>
               <li>a scheduled weekly rhythm</li>
             </ul>
-            <a class="button secondary" href="./company/README.md">Follow Level 2</a>
+            <a class="button secondary" href="https://github.com/Works-HQ/ai-brain-starter-pack/blob/main/company/README.md">Follow Level 2</a>
           </article>
         </div>
       </div>
@@ -624,6 +586,60 @@
       </div>
     </section>
 
+    <section class="content" id="source-truth" aria-labelledby="truth-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Live systems and source truth</p>
+          <h2 id="truth-title">The brain sits alongside your software. It does not replace it.</h2>
+          <p>Your CRM, accounting, and job management tools still own live numbers and schedules. The brain holds how your business works, points to source files, and follows one clear rule whenever two sources disagree.</p>
+        </div>
+        <ul class="rules">
+          <li><strong>1. Live systems win for today.</strong>Job status, invoices, pricing, and schedules come from the system that runs them, not an old note or summary.</li>
+          <li><strong>2. Approved beats draft.</strong>A verified brain file or signed document beats a newer chat message, transcript, or unreviewed draft.</li>
+          <li><strong>3. Recency breaks ties only.</strong>Newer wins only when both sources carry the same authority. If it is still unclear, the AI flags both and asks.</li>
+          <li><strong>4. Supersede, never silently stack.</strong>Replace current state in place with a date, append history to the log, and retire unused skills to <code>_Retired/</code> instead of letting old copies compete.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="content" id="shared-brain" aria-labelledby="shared-brain-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">One brain, multiple agents</p>
+          <h2 id="shared-brain-title">The runtime is rented. The brain is owned.</h2>
+          <p>Claude and Codex enter through different instruction files, then work from the same context, memory, tasks, history, and skills inside one folder you control.</p>
+        </div>
+        <div class="runtime-architecture" aria-label="Claude and Codex connected to one shared AI brain">
+          <article class="runtime-card">
+            <p class="level-number">Runtime A</p>
+            <h3>Claude</h3>
+            <p class="runtime-entry"><code>CLAUDE.md</code><br>Routes Claude into the owned brain.</p>
+          </article>
+          <div class="connector" aria-hidden="true">→</div>
+          <article class="brain-home">
+            <p class="level-number">Owned layer</p>
+            <h3>Your AI Brain folder</h3>
+            <ul>
+              <li>standing and current context</li>
+              <li>visible memory and history</li>
+              <li>one list of open tasks</li>
+              <li>canonical shared skills</li>
+            </ul>
+          </article>
+          <div class="connector" aria-hidden="true">←</div>
+          <article class="runtime-card">
+            <p class="level-number">Runtime B</p>
+            <h3>Codex</h3>
+            <p class="runtime-entry"><code>AGENTS.md</code><br>Routes Codex into the same owned brain.</p>
+          </article>
+        </div>
+        <div class="shared-proof">
+          <p>Use one canonical instruction file with a relative symlink or generated mirror. Hidden tool memory can cache the brain, but it must not become the only copy. Prove the setup by making one approved update through Claude and reading it back through Codex.</p>
+          <a class="button secondary" href="./shared-brain.html">Read the visual guide</a>
+        </div>
+      </div>
+    </section>
+
     <section class="content" aria-labelledby="layout-title">
       <div class="wrap">
         <div class="section-head">
@@ -664,6 +680,7 @@
     REFLECTION_LOG.md
     WAITING_FOR.md
     WEEKLY_UPDATE.md
+    LOOP_REGISTER.md
   skills/</pre>
           </div>
         </div>
@@ -677,7 +694,7 @@
             </div>
             <div class="file-row">
               <dt><code>brain/</code></dt>
-              <dd>Slow-changing company knowledge. <code>Company.md</code> holds durable facts about the business, while <code>People/</code> holds context about important working relationships.</dd>
+              <dd>Slow-changing company knowledge. Start with <code>Company.md</code> and <code>People/</code>, then extend into <code>Suppliers/</code> (or <code>Subbies/</code>), <code>Projects/</code>, and <code>Procedures/</code> (SOPs) as real needs show up.</dd>
             </div>
             <div class="file-row">
               <dt><code>brain/_source-docs/</code></dt>
@@ -712,8 +729,12 @@
               <dd>The latest approved summary of progress, priorities, decisions, risks, and next actions.</dd>
             </div>
             <div class="file-row">
+              <dt><code>LOOP_REGISTER.md</code></dt>
+              <dd>One-page list of the recurring loops keeping the brain alive, who owns each one, and the one-line check that proves it worked.</dd>
+            </div>
+            <div class="file-row">
               <dt><code>skills/</code></dt>
-              <dd>Repeatable workflows for debriefs, reflections, morning sweeps, weekly updates, and meeting notes. Each skill defines how finished work is routed back into the right files.</dd>
+              <dd>Repeatable workflows for debriefs, reflections, morning sweeps, weekly updates, and meeting notes. Each skill defines how finished work is routed back into the right files. Move unused skills to <code>_Retired/</code> rather than letting them clutter the list.</dd>
             </div>
           </dl>
         </section>
@@ -815,5 +836,126 @@
       <a href="https://github.com/Works-HQ/ai-brain-starter-pack">GitHub repository</a>
     </div>
   </footer>
+<!-- deck-analytics beacon: Works shared-asset engagement -->
+<script>
+/* deck-analytics beacon: Works portal engagement v2. No form or keystroke contents. */
+(() => {
+  'use strict';
+  const COLLECTOR = 'https://works-deck-analytics.netlify.app';
+  const DECK = 'ai-brain-starter-pack';
+  if (window.__worksEngagement || navigator.webdriver || /Headless|bot\b|crawl|spider|preview/i.test(navigator.userAgent)) return;
+  window.__worksEngagement = true;
+  const store = {
+    get(key) { try { return localStorage.getItem(key); } catch (_) { return null; } },
+    set(key, value) { try { localStorage.setItem(key, value); } catch (_) {} }
+  };
+  const visitor = store.get('_dav') || (crypto.randomUUID ? crypto.randomUUID() : Date.now().toString(36) + Math.random().toString(36).slice(2));
+  store.set('_dav', visitor);
+  const params = new URLSearchParams(location.search);
+  const recipient = (params.get('rt') || params.get('v') || store.get('_works_rec_' + DECK) || '').slice(0, 80) || null;
+  if (recipient) store.set('_works_rec_' + DECK, recipient);
+  const page = location.protocol === 'file:' ? '/deck-download/' : location.pathname;
+  let referrer = null;
+  try { const r = new URL(document.referrer); if (r.protocol === 'http:' || r.protocol === 'https:') referrer = r.origin + r.pathname; } catch (_) {}
+  let queue = Promise.resolve();
+  function send(type, extra, unload = false) {
+    const payload = Object.assign({ t: type, deck: DECK, v: visitor, rec: recipient, ua: navigator.userAgent,
+      ref: referrer, dev: /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent) ? 'mobile' : 'desktop',
+      w: innerWidth, title: document.title.slice(0, 120) }, extra || {});
+    const body = JSON.stringify(payload);
+    if (unload && navigator.sendBeacon) {
+      // Preserve ordering with earlier open/action writes before the final delta.
+      queue.finally(() => navigator.sendBeacon(COLLECTOR + '/track', new Blob([body], {type:'text/plain'})));
+      return;
+    }
+    queue = queue.then(() => fetch(COLLECTOR + '/track', {method:'POST',body,keepalive:true,headers:{'Content-Type':'text/plain'}})).catch(() => {});
+  }
+  const clean = text => String(text || '').replace(/\s+/g, ' ').trim().slice(0, 100);
+  let activeMs = 0, dwell = {}, maxIdx = -1, bucket = '', last = performance.now();
+  let lastInput = Date.now(), lastDepth = 0, seen = new Set();
+  const slides = Array.from(document.querySelectorAll('section.slide'));
+  const hasFocus = () => !document.hidden && document.hasFocus() && Date.now() - lastInput < 60000;
+  function settle() {
+    const now = performance.now(), delta = Math.max(0, Math.min(5000, now - last));
+    if (hasFocus()) { activeMs += delta; if (bucket) dwell[bucket] = (dwell[bucket] || 0) + delta; }
+    last = now;
+  }
+  function action(name, href) { send('action', {action:clean(name).slice(0,120),href:href || null}); }
+  function once(name) { if (!seen.has(name)) { seen.add(name); action(name); } }
+  function visibleArea(el) {
+    const r = el.getBoundingClientRect();
+    return Math.max(0, Math.min(innerHeight,r.bottom) - Math.max(0,r.top)) * Math.max(0, Math.min(innerWidth,r.right) - Math.max(0,r.left));
+  }
+  function selectView() {
+    settle();
+    if (slides.length) {
+      let best = innerWidth > 700 ? slides.find(el => el.classList.contains('active') || el.classList.contains('is-active')) : null;
+      let area = 0;
+      if (!best) for (const el of slides) {
+        const style = getComputedStyle(el);
+        if (style.visibility === 'hidden' || style.display === 'none' || Number(style.opacity) === 0) continue;
+        const a = visibleArea(el); if (a > area) { area = a; best = el; }
+      }
+      if (best) {
+        const i = slides.indexOf(best), label = 'slide-' + String(i+1).padStart(2,'0') + ': ' + clean(best.querySelector('h1,h2,.statement')?.textContent || best.id || 'Presentation');
+        maxIdx = Math.max(maxIdx, i); bucket = label; once('view:' + label);
+      }
+    } else if (page.includes('company-map')) {
+      const hash = location.hash.replace(/^#/, '') || 'company';
+      bucket = 'company-map:' + hash;
+      once((/^o\d+$/.test(hash) ? 'opportunity-view:' : 'workflow-view:') + hash);
+    } else if (page.includes('map-check')) {
+      bucket = 'current-state:' + (location.hash.replace(/^#/, '') || 'overview'); once('view:' + bucket);
+    } else {
+      let best = null, area = 0;
+      for (const el of document.querySelectorAll('main > section')) { const a = visibleArea(el); if(a>area) { area=a;best=el; } }
+      bucket = best ? 'section:' + clean(best.querySelector('h2,h3')?.textContent || best.id) : 'page:' + page;
+      once('view:' + bucket);
+    }
+    const extent = document.documentElement.scrollHeight - innerHeight;
+    const depth = extent > 0 ? Math.min(100,Math.round(scrollY / extent * 100)) : 100;
+    for(const threshold of (slides.length && innerWidth>700 ? [] : [25,50,75,100])) if(depth>=threshold && lastDepth<threshold) once('scroll-depth:' + page + (location.hash || '') + ':' + threshold);
+    lastDepth = Math.max(lastDepth, depth);
+  }
+  function flush(unload = false) {
+    settle();
+    if (activeMs < 1 && !Object.keys(dwell).length) return;
+    const delta = {activeMs:Math.round(activeMs),slides:Object.fromEntries(Object.entries(dwell).map(([k,v])=>[k,Math.round(v)])),maxIdx,total:slides.length};
+    activeMs=0;dwell={};send('session',delta,unload);
+  }
+  function userActive() { settle(); lastInput=Date.now(); }
+  for(const name of ['pointerdown','pointermove','keydown','touchstart','wheel']) document.addEventListener(name,userActive,{passive:true});
+  document.addEventListener('click',e=>{
+    const el=e.target.closest?.('a,button,[data-action]');if(!el)return;
+    const a=el.closest('a');const declared=el.getAttribute('data-action');
+    if(declared)action('cta:'+declared);
+    if(a){
+      let url;try{url=new URL(a.getAttribute('href'),location.href);}catch(_){return;}
+      if(a.hasAttribute('download')||url.pathname.includes('/downloads/')||/\.pdf$/i.test(url.pathname))action('download:'+url.pathname,url.pathname);
+      else if(url.origin===location.origin){
+        action('navigate:'+url.pathname+url.hash,url.pathname+url.hash);
+        if(recipient && !url.searchParams.has('rt') && !url.searchParams.has('v')){url.searchParams.set('rt',recipient);a.href=url.href;}
+      }else if(['mailto:','tel:'].includes(url.protocol)||/savvycal|cal\.com|calendar/.test(url.hostname)) action('contact:'+url.protocol);
+      else action('outbound:'+url.hostname,url.origin+url.pathname);
+    }
+    const workflow=el.getAttribute('data-go-wf');if(workflow)action('workflow-step:'+workflow+':'+(el.getAttribute('data-go-step')||''));
+    if(el.id==='next'||el.id==='prev')action('presentation-control:'+el.id);
+  },true);
+  document.addEventListener('toggle',e=>{
+    const d=e.target;if(d.tagName==='DETAILS'&&d.open) action('expand:'+(d.id||clean(d.querySelector('summary')?.textContent)));
+  },true);
+  addEventListener('hashchange',()=>{flush();lastDepth=0;selectView();});
+  addEventListener('scroll',()=>{userActive();selectView();},{passive:true});
+  addEventListener('focus',()=>{last=performance.now();lastInput=Date.now();selectView();});
+  addEventListener('blur',()=>{settle();flush();});
+  document.addEventListener('visibilitychange',()=>{if(document.hidden)flush(true);else{last=performance.now();lastInput=Date.now();selectView();}});
+  addEventListener('pagehide',()=>flush(true));
+  if(slides.length)new MutationObserver(selectView).observe(document.getElementById('deckStage')||document.body,{subtree:true,attributes:true,attributeFilter:['class']});
+  setInterval(settle,1000);setInterval(()=>flush(),15000);
+  send('open',{total:slides.length});action('page-view:'+page);selectView();
+})();
+
+</script>
+
 </body>
 </html>

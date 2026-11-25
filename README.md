@@ -93,6 +93,16 @@ The four steps below are the write path: how raw material moves from Capture int
 
 The loop keeps running. Work creates new evidence, debriefs capture what changed, and approved lessons return to the brain. The source material remains traceable, and each future job starts from checked facts instead of another search through the archive.
 
+### Live systems and conflict resolution
+
+The brain sits alongside your existing tools (CRM, accounting, scheduling, job management) and never replaces them. When two sources disagree, resolve in order:
+
+1. **Live systems win for today.** Current prices, job status, schedules, and invoices come from the system that runs them.
+2. **Approved beats draft.** A verified brain file or signed document beats a newer chat message, transcript, or unreviewed draft.
+3. **Recency breaks ties only** between sources with the same authority. If still unclear, flag both and ask.
+
+As your company brain grows beyond `Company.md` and `People/`, add entity folders under `brain/` that fit your operation (`Suppliers/`, `Subbies/`, `Projects/`, `Procedures/`), one file per entity, updated in place. Give every skill an owner and move unused skills to `_Retired/` instead of letting them rot in the live list.
+
 ## The 30-minute promise
 
 A fresh reader should be able to make the personal level useful within 30 minutes. Useful means the agent has standing context, the three homes exist, the skills can find them, and one real debrief has updated the correct files with approval.
